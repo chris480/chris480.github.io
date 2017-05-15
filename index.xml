@@ -621,7 +621,7 @@ Pretty design matters, but pretty design just does not work in the way web desig
 &lt;h4 id=&#34;contact-me:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Contact Me&lt;/h4&gt;
 
 &lt;p&gt;&lt;i class=&#34;material-icons_lg icon ion-social-whatsapp-outline&#34;&gt;&lt;/i&gt; Phone#: &lt;a href=&#34;tel:4256868641&#34;&gt;425-686-8641&lt;/a&gt; &lt;br&gt;
-&lt;i class=&#34;material-icons_lg icon ion-email&#34;&gt;&lt;/i&gt; Email: &lt;a href=&#34;mailto:chris480@uw.edu&#34;&gt;Chris480@uw.edu&lt;/a&gt;&lt;/p&gt;
+&lt;i class=&#34;material-icons_lg icon ion-email&#34;&gt;&lt;/i&gt; Email: &lt;a href=&#34;mailto:mail@christopher-nguyen.com&#34;&gt;mail@christopher-nguyen.com&lt;/a&gt;&lt;/p&gt;
 
 &lt;form action=&#34;https://formspree.io/chris480@uw.edu&#34; method=&#34;POST&#34;&gt;
   &lt;div class=&#34;mdl-textfield&#34;&gt;
@@ -689,7 +689,7 @@ Pretty design matters, but pretty design just does not work in the way web desig
 &lt;div&gt;
 &lt;div class=&#34;mdl-card mdl-shadow--2dp thumb-card&#34;&gt;
   &lt;div class=&#34;mdl-card__title mdl-card--expand&#34;&gt;
-    &lt;a href=&#34;indianight.party&#34;&gt;&lt;img src=&#34;http://christopher-nguyen.com/images/india-night.jpg&#34;&gt;&lt;/a&gt;
+    &lt;a href=&#34;http://indianight.com/&#34;&gt;&lt;img src=&#34;http://christopher-nguyen.com/images/india-night.jpg&#34;&gt;&lt;/a&gt;
   &lt;/div&gt;
   &lt;div class=&#34;mdl-card__supporting-text&#34;&gt;
     India Night Event
