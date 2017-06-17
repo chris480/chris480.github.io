@@ -2,9 +2,9 @@ body .hugo-blog {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 h1{font-size: 36px;line-height: 1.2;}
-h2{font-size: 26px;line-height: 1.2;}
-h3{font-size: 20px;line-height: 1.2;}
-h4{font-size: 18px;line-height: 1.2;}
+h2{font-size: 30px;line-height: 1.2;}
+h3{font-size: 26px;line-height: 1.2;}
+h4{font-size: 20px;line-height: 1.2;}
 
 
 .hugo-blog .hugo-blog__posts {
@@ -73,6 +73,9 @@ h4{font-size: 18px;line-height: 1.2;}
 .hugo-blog .mdl-card__media a,
 .hugo-blog .mdl-card__title a {
   color: inherit;
+}
+.hugo-blog .mdl-card__title a img{
+  margin: 0;
 }
 .hugo-blog .mdl-card__supporting-text {
   padding: 24px;
@@ -252,7 +255,7 @@ h4{font-size: 18px;line-height: 1.2;}
 }
 .hugo-blog .mdl-card h3 {
   margin: 0;
-  padding-top: 1.5em;
+  padding: 2.5em 0 0.5em;
 }
 .hugo-blog .mdl-card h3 a {
   text-decoration: none;
@@ -293,6 +296,7 @@ h4{font-size: 18px;line-height: 1.2;}
 .hugo-blog .hugo-content img {
   max-width: 100%;
   height: auto;
+  margin: 2em 0 2em;
 }
 .hugo-blog--blogpost .comments {
   display: flex;

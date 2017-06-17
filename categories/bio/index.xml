@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Aug 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://christopher-nguyen.com/categories/bio/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://christopher-nguyen.com/categories/bio/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>About Me</title>
@@ -15,36 +17,9 @@
       <pubDate>Tue, 18 Aug 2015 00:00:00 +0000</pubDate>
       
       <guid>http://christopher-nguyen.com/about/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;m a Seattle based UX Designer and Web Developer. I have many years under my belt working in various areas, from mom and pop shops to enterprise projects. If you are in need of Design or Development, please do reach out to me.&lt;/p&gt;
-
-&lt;h4 id=&#34;contact-me:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Contact Me&lt;/h4&gt;
-
-&lt;p&gt;&lt;i class=&#34;material-icons_lg icon ion-social-whatsapp-outline&#34;&gt;&lt;/i&gt; Phone#: &lt;a href=&#34;tel:4256868641&#34;&gt;425-686-8641&lt;/a&gt; &lt;br&gt;
-&lt;i class=&#34;material-icons_lg icon ion-email&#34;&gt;&lt;/i&gt; Email: &lt;a href=&#34;mailto:mail@christopher-nguyen.com&#34;&gt;mail@christopher-nguyen.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;form action=&#34;https://formspree.io/chris480@uw.edu&#34; method=&#34;POST&#34;&gt;
-  &lt;div class=&#34;mdl-textfield&#34;&gt;
-    &lt;input  class=&#34;mdl-textfield__input&#34; type=&#34;text&#34; name=&#34;name&#34; required&gt;
-    &lt;span class=&#34;highlight&#34;&gt;&lt;/span&gt;
-    &lt;span class=&#34;bar&#34;&gt;&lt;/span&gt;    
-    &lt;label class=&#34;mdl-textfield__label&#34; for=&#34;name&#34;&gt;Name&lt;/label&gt;
-  &lt;/div&gt; 
-  &lt;div class=&#34;mdl-textfield&#34; &gt;
-    &lt;input  class=&#34;mdl-textfield__input&#34; type=&#34;email&#34; name=&#34;_replyto&#34; required&gt;
-    &lt;span class=&#34;highlight&#34;&gt;&lt;/span&gt;
-    &lt;span class=&#34;bar&#34;&gt;&lt;/span&gt;        
-    &lt;label class=&#34;mdl-textfield__label&#34; for=&#34;_replyto&#34;&gt;Email&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&#34;mdl-textfield&#34;&gt;  
-    &lt;textarea class=&#34;mdl-textfield__input&#34; name=&#34;message&#34; rows=&#34;5&#34; placeholder=&#34;Your message&#34;&gt;&lt;/textarea&gt;  
-  &lt;/div&gt;
-  &lt;div&gt;   
-    &lt;input class=&#34;mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect&#34; type=&#34;submit&#34; value=&#34;Send&#34;&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-</description>
+      <description> I&amp;rsquo;m a Seattle based UX Designer and Web Developer. I have many years under my belt working in various areas, from mom and pop shops to enterprise projects. If you are in need of Design or Development, please do reach out to me.
+Contact Me  Phone#: 425-686-8641  Email: mail@christopher-nguyen.com
+  Name    Email       </description>
     </item>
     
   </channel>
