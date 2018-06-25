@@ -2,59 +2,70 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project on Christopher Nguyen - UX Designer</title>
-    <link>http://christopher-nguyen.com/categories/project/</link>
+    <link>https://christopher-nguyen.com/categories/project/</link>
     <description>Recent content in Project on Christopher Nguyen - UX Designer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jan 2016 02:27:08 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Jun 2017 02:27:08 +0000</lastBuildDate>
     
-	<atom:link href="http://christopher-nguyen.com/categories/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://christopher-nguyen.com/categories/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Edifecs Redesign Part 2 - Web</title>
-      <link>http://christopher-nguyen.com/portfolio/edifecs/</link>
-      <pubDate>Tue, 05 Jan 2016 02:27:08 +0000</pubDate>
+      <title>VR Hackathon - Vox Augment </title>
+      <link>https://christopher-nguyen.com/portfolio/voxaugmento/</link>
+      <pubDate>Fri, 23 Jun 2017 02:27:08 +0000</pubDate>
       
-      <guid>http://christopher-nguyen.com/portfolio/edifecs/</guid>
-      <description>&lt;p&gt;Main corporate website redesign and rebuild was being worked in on in parallel with internal branding changes. The premise was similar to the internal updates. With continued growth in the industry and general progression of technology, the main corporate website needed to be overhauled to reflect the times.&lt;/p&gt;
+      <guid>https://christopher-nguyen.com/portfolio/voxaugmento/</guid>
+      <description>&lt;p&gt;Winner of best technical achievement at &lt;a href=&#34;http://vrhackathon.web3d.org/seattle-2017-09/&#34; target=&#34;_blank&#34;&gt;2017 Seattle VR Hackathon&lt;/a&gt;. VR is a medium that’s quickly becoming a new creative outlet. We believe it is a way of making music based on natural movements, without relying on existing instrument interfaces. The level of immersion can unlock latent musical abilities in new users, or extend the abilities of existing musicians.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>#WhatIRun</title>
-      <link>http://christopher-nguyen.com/portfolio/whatwerun/</link>
-      <pubDate>Fri, 27 Nov 2015 00:00:00 +0000</pubDate>
+      <link>https://christopher-nguyen.com/portfolio/whatwerun/</link>
+      <pubDate>Mon, 27 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://christopher-nguyen.com/portfolio/whatwerun/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://whatwerun.com/&#34;&gt;WhatIRun&lt;/a&gt; asks employees, partners, customers, friends, and other women to join a conversation. To share what you run. Women are powerful. And most only see snippets or catch a glimpse into all what we manage and drive on a daily basis. The campaign partners with Ryka shoes, a women specific shoe brand. &lt;/p&gt;</description>
+      <guid>https://christopher-nguyen.com/portfolio/whatwerun/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://whatirun.org/&#34;&gt;WhatIRun&lt;/a&gt; asks employees, partners, customers, friends, and other women to join a conversation. To share what you run. Women are powerful. And most only see snippets or catch a glimpse into all what we manage and drive on a daily basis. The campaign partners with Ryka shoes, a women specific shoe brand. &lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Edifecs Redesign Part 2 - Web</title>
+      <link>https://christopher-nguyen.com/portfolio/edifecs/</link>
+      <pubDate>Tue, 05 Jan 2016 02:27:08 +0000</pubDate>
+      
+      <guid>https://christopher-nguyen.com/portfolio/edifecs/</guid>
+      <description>&lt;p&gt;Main corporate website redesign and rebuild was being worked in on in parallel with internal branding changes. The premise was similar to the internal updates. With continued growth in the industry and general progression of technology, the main corporate website needed to be overhauled to reflect the times.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mikes Amazing Cake Research</title>
-      <link>http://christopher-nguyen.com/portfolio/cake/</link>
+      <link>https://christopher-nguyen.com/portfolio/cake/</link>
       <pubDate>Sun, 27 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://christopher-nguyen.com/portfolio/cake/</guid>
+      <guid>https://christopher-nguyen.com/portfolio/cake/</guid>
       <description>Renowned cake maker in need of delicious user research The Mike’s Amazing Cakes increasing online presence is designed to showcase Pastry Chef Mike McCarey’s one-of-a-kind, customizable decorative cakes. His web presence is mostly primarily informative, but also has a commercial element in the sale of tutorial DVDs and other cake paraphernalia. In the world of digital marketing, it&amp;rsquo;s important to understand who is interested in your services and why. The research done sheds light on possible featuring offerings and marketing tactics to be used.</description>
     </item>
     
     <item>
       <title>Hop on Hop off</title>
-      <link>http://christopher-nguyen.com/portfolio/hopon/</link>
+      <link>https://christopher-nguyen.com/portfolio/hopon/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://christopher-nguyen.com/portfolio/hopon/</guid>
+      <guid>https://christopher-nguyen.com/portfolio/hopon/</guid>
       <description>Frequent business travelers can easily find quick city tours In summer of 2012, a client approached me about designing an interesting service that was to cater to frequent travelers. I worked with the client to design and refine this concept service. I produced mobile designs for iOS, Android, and Windows Mobile based on the design standards at the time. The designs included interaction diagrams, spec docs, and an axure based interactive prototype.</description>
     </item>
     
     <item>
       <title>Collection of other works</title>
-      <link>http://christopher-nguyen.com/portfolio/other/</link>
+      <link>https://christopher-nguyen.com/portfolio/other/</link>
       <pubDate>Thu, 27 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://christopher-nguyen.com/portfolio/other/</guid>
+      <guid>https://christopher-nguyen.com/portfolio/other/</guid>
       <description>&lt;h2 id=&#34;a-simple-list-of-some-other-works&#34;&gt;A simple list of some other works.&lt;/h2&gt;</description>
     </item>
     
