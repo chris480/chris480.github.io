@@ -447,6 +447,9 @@ h4{font-size: 20px;line-height: 1.2;}
   line-height: 20px;
   text-decoration: none;
 }
+.project-title {
+    text-shadow: 1px 1px 3px #000;
+}
 .full-table{width: 100%; max-width: 800px;}
 .mdl-data-table{margin-bottom: 2em;white-space: normal;}
 .resume .mdl-card__supporting-text:not(:last-child){min-height: 55px;padding-bottom: 5px;}

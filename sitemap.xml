@@ -54,13 +54,13 @@
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/tags/bio/</loc>
+    <loc>https://christopher-nguyen.com/categories/bio/</loc>
     <lastmod>2015-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/categories/bio/</loc>
+    <loc>https://christopher-nguyen.com/tags/bio/</loc>
     <lastmod>2015-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -78,14 +78,14 @@
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/tags/meta/</loc>
-    <lastmod>2017-06-23T02:27:08+00:00</lastmod>
+    <loc>https://christopher-nguyen.com/categories/meta/</loc>
+    <lastmod>2015-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/categories/meta/</loc>
-    <lastmod>2015-08-18T00:00:00+00:00</lastmod>
+    <loc>https://christopher-nguyen.com/tags/meta/</loc>
+    <lastmod>2017-06-23T02:27:08+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -102,13 +102,13 @@
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/tags/project/</loc>
+    <loc>https://christopher-nguyen.com/categories/project/</loc>
     <lastmod>2017-06-23T02:27:08+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://christopher-nguyen.com/categories/project/</loc>
+    <loc>https://christopher-nguyen.com/tags/project/</loc>
     <lastmod>2017-06-23T02:27:08+00:00</lastmod>
     <priority>0</priority>
   </url>
