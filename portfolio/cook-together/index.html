@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="generator" content="Hugo 0.23" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Seattle UX Designer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cook Together</title>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Quattrocento" rel="stylesheet">
+        <link rel="stylesheet" href="/css/tiny/styles.css"/>
+</head>
+<body>
+<main class="portfolio-page">
+	    <nav class="">
+    	<div class="flex">
+        	            <ul>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/resume/Christopher-Le-Nguyen-Resume.pdf" target="_blank">Resume</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+    		<h1><a href="/">Christopher Nguyen</a></h1>
+        		    	<ul>
+	    		<li><a href="mailto:mail@christopher-nguyen.com?subject=Hello">Email</a></li>
+	    		<li><a href="https://www.linkedin.com/in/clnguyen/" target="_blank">LinkedIn</a></li>
+	    		<li><a href="https://github.com/chris480/" target="_blank">GitHub</a></li>
+	    	</ul>
+    	</div>
+    </nav>
+	<header class="portfolio-intro">
+	<div class="frame"></div>
+	<h1 class="h2 text-chroma">Cook Together</h1>
+</header>
+
+	<article class="container">
+		<div class="row portfolio-meta">
+			<time class="text-chroma-2">2019</time>
+			<link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
+			<p class="barcode">9781483423289</p>
+		</div>
+
+		<div class="row">
+
+			<p><strong>What is</strong> <a href="https://cooktogether.blog" target="_blank">cooktogether.blog?</a> Cook Together (CT) is
+				cooking class repository. CT started as an internal company program. Weekly in-house cooking classes would be provided. Employees that registered and attended were required to cook together, eat together, and clean together.
+			</p>	
+			<p>Attendees of classes would likely be stationed working on one part of the overall meal. No one person would learn everything. These classes are a community activity.</p>
+			<p>As the classes grew, a way to house and consume past classes was needed. Originally past classes were simple blog like entries. No substantial formatting, structure.</p>
+			<p>Product managers internally saw an opportunity to take an experimental employee benefit into a full fledge platform. Eventually spreading CT to other companies and partners to setup their own. They asked for a new enhanced platform that was easy to use, robust, SEO friendly, and accesible.</p>
+				<p>
+					The platform was designed and built for both public and private use.
+					Partnered companies can run in-house cooking classes, then post the class details online for the public
+					or their employees. CT uses innovative and accessible lesson interface to help users recreate
+					recipes on their own time.
+				</p>
+			</p>
+
+			<figure>
+				<a href="/images/ct-classes.jpg"><img src="/images/ct-classes.jpg"
+						alt="" loading="lazy"></a>
+			</figure>
+
+				<h3 id="problem">Problem</h3>
+
+				<p>300+ recipes across nearly a hundred classes needed to be presented and organized in an easier way compared to other cooking websites.</p>
+
+				<p>Conventional cooking or recipe platforms generally take two approaches to displaying information</p>
+				<ol>
+					<li>Present a list ingredients and a separate list of steps or directions</li>
+					<li>Place ingredients as a list for within each step</li>
+				</ol>
+
+				<p>Dissociation between ingredients and steps makes it difficult for users to follow along. Keeping the ingredients and steps nested together makes it impossible to gain an overview of the ingredients involved.</p>
+
+				<figure>
+					<a href="/images/recipe-problem.jpg"><img src="/images/recipe-problem.jpg"
+							alt="Traditional Approach" loading="lazy"></a>
+					<figcaption>Which step is which? (screenshot example from allrecipes.com)</figcaption>
+				</figure>
+
+				<h3 id="solutions">Solution</h3>
+
+				<p>Overall the solution is straightforward. A list that has two-way interaction between each other. Interact with a step and the corresponding ingredients highlight, and vice versa.</p>
+
+				<p>The implementation was not straightforward</p>
+
+				<figure>
+					<a href="/images/recipe-solution.jpg"><img src="/images/recipe-solution.jpg" alt="A btter approach"
+							loading="lazy"></a>
+					<figcaption>Step-by-step highlight</figcaption>
+				</figure>
+
+				<h4>Challenges that needed to be solved</h4>
+				<p><b>Backend entry</b></p>
+				<p>The backend for the administrative staff (chefs, nutritionist, moderators) needed to be quick to master while being reusable</p>
+				<ul>
+					<li>For each direction/step added, an additional panel would appear requiring entry of the ingredient and quantity</li>
+					<li>Each ingredient would be logged for reuse without the quantity</li>
+					<li>A finished preview was provided for each entry</li>
+				</ul>
+
+				<p><b>Accessibility</b></p>
+				<p>It was important that the ingredients and steps interaction was correctly conveyed to users with assistive technologies.</p>
+				<p>At the time of this writing, there does not exist two-way binding of aria tags. An enhanced custom solution for tags was asked on <a href="https://stackoverflow.com/questions/53729511/aria-two-way-labels-for-multiple-visible-html-elements" target="_blank">stackoverflow</a></p>
+			<h3 id="success">Successes</h3>
+			<p>Within 6 months of launching CT, product managers noted the following.</p>
+			<ul>
+				<li>Employee engagement and satisfaction went up</li>
+				<li>Consistently healthier lunch choices were observed on non-CT days</li>
+				<li>Employees claimed to regularly make meals found CT</li>
+				<li>CT ranked #1 in search results for the term Cook Together</li>
+			</ul>
+
+		</div>
+	</article>
+</main>
+            <footer>
+                <div>
+                    <span>© Christopher Nguyen</span>
+                </div>
+            </footer>
+        </main>
+</body>
+</html>

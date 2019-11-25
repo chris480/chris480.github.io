@@ -1,0 +1,114 @@
+.portfolio-page{
+	nav{
+		text-align: center;
+		z-index: 2;
+		margin-top: 1em;
+		h1{ 
+			font-size: 1em;
+			a{
+				color: #333;
+			}
+		}
+		ul{
+		    padding: 0;
+		    margin: 0.5em 1em;
+			li{
+				display: inline-block;
+				margin: .25em 0.25em;
+				min-width: 6ch;				
+			}
+		}  
+		.flex{
+			justify-content: center;
+		}
+	}
+	header{		
+		&.portfolio-intro{
+			position: relative;
+			.h2{
+				font-size: calc(1.93em + .25vw);
+			    position: absolute;
+			    top: 0;
+			    width: 100%;
+			    text-align: center;
+			    height: 100%;
+			    justify-content: center;
+			    display: flex;
+			    align-items: center;
+			}
+		}
+	}
+	article{
+		margin-top: 1em;
+	}
+	figure{
+		display: inline-block;
+		margin-bottom: 1em;
+		img{
+			border: 1px solid #eee;
+		}
+	}
+	ul{
+		list-style: disc;
+	}
+	h3,.h3,h4,.h4{
+		margin-top: 1em;
+	}
+	.frame{
+	    top: 1em;
+	    position: relative;
+	    min-height: 70vh;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+		filter: invert(1) drop-shadow(2px 1px 1px rgba(255,0,0, 0.45)) drop-shadow(-1.5px -1px 1px rgba(0,0,255, 0.45));
+		box-shadow: inset 0 0 0 1em #fff;
+		border: 2px solid #ff0;		    
+		&:before{
+		    content: '';
+		    position: absolute;
+		    height: 70vh;
+		    background-image: url('/images/a1.svg');
+		    left: 0;
+		    mix-blend-mode: difference;
+		    width: 100%;
+		    max-height: 70vh;
+		    display: block;
+		    margin: 0 auto;
+		    background-repeat: no-repeat;
+		    background-position: center;
+		    filter: invert(1) blur(.1px);
+		    transform: translateZ(0);
+		    z-index: 2;
+		}
+	}
+
+	.portfolio-meta{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 3em;
+	}
+
+} 
+.portfolio-archive{
+	nav{
+		position: relative;
+	}
+}
+.other-works{
+	.grid{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));	
+		grid-gap: 1rem;	
+	}
+	figure{
+		h1{
+			font-size: 1.3rem;
+		}
+		a{
+			display: block;
+			height: 14rem;
+			overflow: hidden			
+		}
+	}
+}
