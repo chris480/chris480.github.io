@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Christopher Nguyen - UX Designer</title>
@@ -6,31 +6,13 @@
     <description>Recent content in Tags on Christopher Nguyen - UX Designer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://christopher-nguyen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Bio</title>
-      <link>https://christopher-nguyen.com/tags/bio/</link>
-      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://christopher-nguyen.com/tags/bio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Meta</title>
-      <link>https://christopher-nguyen.com/tags/meta/</link>
-      <pubDate>Fri, 23 Jun 2017 02:27:08 +0000</pubDate>
-      
-      <guid>https://christopher-nguyen.com/tags/meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Project</title>
+      <title>project</title>
       <link>https://christopher-nguyen.com/tags/project/</link>
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
@@ -39,7 +21,25 @@
     </item>
     
     <item>
-      <title>Test</title>
+      <title>bio</title>
+      <link>https://christopher-nguyen.com/tags/bio/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://christopher-nguyen.com/tags/bio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>meta</title>
+      <link>https://christopher-nguyen.com/tags/meta/</link>
+      <pubDate>Fri, 23 Jun 2017 02:27:08 +0000</pubDate>
+      
+      <guid>https://christopher-nguyen.com/tags/meta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test</title>
       <link>https://christopher-nguyen.com/tags/test/</link>
       <pubDate>Sun, 04 Oct 2015 00:00:00 +0000</pubDate>
       

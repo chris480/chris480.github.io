@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on Christopher Nguyen - UX Designer</title>
+    <title>about on Christopher Nguyen - UX Designer</title>
     <link>https://christopher-nguyen.com/categories/about/</link>
-    <description>Recent content in About on Christopher Nguyen - UX Designer</description>
+    <description>Recent content in about on Christopher Nguyen - UX Designer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
@@ -26,9 +26,8 @@
       <pubDate>Tue, 18 Aug 2015 00:00:00 +0000</pubDate>
       
       <guid>https://christopher-nguyen.com/about/</guid>
-      <description> I&amp;rsquo;m a Seattle based UX Designer and Web Developer. I have many years under my belt working in various areas, from mom and pop shops to enterprise projects. If you are in need of Design or Development, please do reach out to me.
-Contact Me  Phone#: 425-686-8641  Email: mail@christopher-nguyen.com
-  Name    Email       </description>
+      <description>I&amp;rsquo;m a Seattle based UX Designer and Web Developer. I have many years under my belt working in various areas, from mom and pop shops to enterprise projects. If you are in need of Design or Development, please do reach out to me.
+Contact Me Phone#: 425-686-8641Email: mail@christopher-nguyen.</description>
     </item>
     
   </channel>
