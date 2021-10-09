@@ -1,15 +1,18 @@
 @import 'normalize.scss';
 
-$blue: #2196f3;
+$link: var(--link);
 $green: #27ae60;
 
 * {
 	box-sizing: border-box;
 }
+:root {
+	--link: #333;
+}
 
 body {
 	font-size: calc(16px + .25vw);
-	font-family: 'Quattrocento', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -26,7 +29,7 @@ h5 {
 
 h1,
 .h1 {
-	font-size: calc(1.63em + 8.25vw);
+	font-size: clamp(13px, calc(1.63rem + 8.25vw), 12rem);
 	line-height: 1.2;
 }
 
@@ -50,7 +53,7 @@ h4,
 
 a {
 	text-decoration: none;
-	color: $blue;
+	color: $link;
 
 	&:hover,
 	&:active,
@@ -88,14 +91,20 @@ figcaption {
 	font-size: 80%;
 }
 
+main {
+	max-width: 2000px;
+	margin: 0 auto;
+}
+
 .btn {
 	background: $green;
 	color: #fff;
 	cursor: pointer;
-
+	height: 3rem;
+    border-radius: .25rem;
 	&:active,
 	&:focus {
-		background: darken($green, 1.25);
+		outline: 2px solid #000;
 	}
 }
 
@@ -115,13 +124,20 @@ figcaption {
 	margin: 0;
 }
 
+.text-end {
+	text-align: right;
+	text-align: end;
+}
+
 .home {
 	.intro.grid-container {
 		display: grid;
-		grid-template-columns: 1fr 2.5fr;
+		grid-template-columns: 1.1fr 2.5fr;
 		grid-template-rows: 1fr 1fr;
 		grid-template-areas: "info Needle""info Needle";
-
+		@media only screen and (max-width: 50rem) {
+			grid-template-columns: 1.3fr 1fr;
+		}
 		@media only screen and (max-width: 45rem) {
 			grid-template-columns: 1fr 1fr;
 		}
@@ -129,7 +145,7 @@ figcaption {
 
 	.info {
 		display: grid;
-		grid-template-columns: 1fr 2fr;
+		grid-template-columns: 4.4rem ​2f;
 		grid-template-rows: 1fr 1fr;
 		grid-template-areas: "nav name""social name""social about";
 		grid-area: info;
@@ -139,7 +155,7 @@ figcaption {
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: 1fr 1fr 1fr 1fr;
 			grid-template-areas: "nav nav""name name""social social""about about";
-			height: 38.125rem;
+			height: 34.125rem;
 		}
 	}
 
@@ -147,7 +163,7 @@ figcaption {
 		grid-row-start: 1;
 		grid-column-start: 1;
 		grid-row-end: span 1;
-
+		z-index: 1;
 		@media only screen and (max-width: 30rem) {
 			grid-row-start: 1;
 			grid-column-start: 1;
@@ -169,15 +185,15 @@ figcaption {
 			margin-bottom: 3em;
 
 			h1 {
-				line-height: 0.7;
-
+				line-height: 1;
+				text-shadow: 2px 1px #fff;
 				&:before {
 					content: '';
 					display: grid;
 					height: 10px;
 					width: 53.6%;
 					background: #000;
-					margin-bottom: calc(50px + 1vw);
+					margin-bottom: 1vh;
 					margin-left: auto;
 				}
 			}
@@ -201,14 +217,13 @@ figcaption {
 
 	.about {
 		p {
-			padding: 0em 0em 1em 0em;
+			padding: 0 0 1rem 0;
 			line-height: 1.2;
-			font-size: 1.4em;
-			margin-top: 0.6em;
+			margin-top: 0.6rem;
 		}
 
 		@media only screen and (max-width: 30rem) {
-			grid-row: 4;
+			grid-row: 3;
 			grid-column: span 2;
 		}
 	}
@@ -227,58 +242,8 @@ figcaption {
 
 .portfolio {
 	.h2 {
-		filter: invert(1);
-		color: #fff;
-		height: 3em;
+		height: 2em;
 		grid-column: 1;
-
-		&:before,
-		&:after {
-			position: absolute;
-			font-family: sans-serif;
-			font-weight: normal;
-			font-size: calc(8.63em + 20.25vw);
-			line-height: 0;
-			top: 0;
-			color: #fff;
-			opacity: 0;
-			transition: .3s ease all;
-			mix-blend-mode: difference;
-		}
-
-		&:before {
-			content: '\2039';
-			//left: -50px;
-			left: -16vw;
-			top: -40px;
-		}
-
-		&:after {
-			content: '\203A';
-			//right: -60px;
-			right: -10vw;
-			top: -40px
-		}
-
-		&:hover {
-
-			&:before,
-			&:after {
-				opacity: 1;
-			}
-
-			&:before {
-				transform: translateX(9.375rem);
-
-				@media only screen and (max-width: 30rem) {
-					transform: translateX(10.375rem);
-				}
-			}
-
-			&:after {
-				transform: translateX(-8.75rem);
-			}
-		}
 
 		@media only screen and (max-width: 30rem) {
 			text-align: center;
@@ -410,8 +375,8 @@ figcaption {
 	.grid-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr 3fr;
-		margin-bottom: 5em;
-		min-height: 150vh;
+		margin-bottom: 3rem;
+		min-height: 103vh;
 		@media only screen and (max-width: 30rem) {
 			grid-template-columns: 1fr
 		}
@@ -434,12 +399,13 @@ figcaption {
 	}
 
 	.process-copy {
-		grid-column: span 1;
+		grid-column: span 2;
 		display: inline-flex;
 		flex-flow: column wrap;
 		justify-content: space-between;
+		max-width: 57.5rem;
 		section {
-			margin-bottom: 3em;
+			margin-bottom: 2rem;
 		}
 
 		h2 {
@@ -465,7 +431,7 @@ figcaption {
 
 	.diagram {
 		position: sticky;
-		top: 4em;
+		top: 7em;
 		@media only screen and (max-width: 40rem) {
 			max-width: 10rem;
 		}			
@@ -530,7 +496,6 @@ figcaption {
 	position: sticky;
 	top: 3em;
 	height: 3em;
-	text-align: center;
 }
 
 .text-chroma {
