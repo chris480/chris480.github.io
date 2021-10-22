@@ -4,43 +4,43 @@
   </style>
   <g id="useful">
     <path fill="none" stroke="#ed5124" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M168.2 138.8l-38.8-67.2 38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#ed5124" transform="translate(157.34 75.12)">
+    <text class="pro2 pro3" fill="#ed5124" transform="translate(159.34 80.12)">
       research
     </text>
   </g>
   <g id="desireable">
     <path fill="none" stroke="#38d122" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M292 211l-39-67.2 39-67.2h77.5l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#38d122" transform="translate(288.71 147.32)">
+    <text class="pro2 pro3" fill="#38d122" transform="translate(291.71 150.32)">
       journey
     </text>
   </g>
   <g id="usable">
     <path fill="none" stroke="#616585" stroke-miterlimit="10" stroke-width="2" d="M44.2 211L5.4 143.8l38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#616585" transform="translate(44.7 147.32)">
+    <text class="pro2 pro3" fill="#616585" transform="translate(34.2 150.32)">
       empathy
     </text>
   </g>
   <g id="finable">
     <path fill="none" stroke="#ce1329" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M44.2 356.4L5.4 289.2 44.2 222h77.6l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#ce1329" transform="translate(45.46 292.72)">
+    <text class="pro2 pro3" fill="#ce1329" transform="translate(45.46 295.72)">
       design
     </text>
   </g>
   <g id="credible">
     <path fill="none" stroke="#ead226" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M168.2 427.6l-38.8-67.2 38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#ead226" transform="translate(183.5 363.93)">
+    <text class="pro2 pro3" fill="#ead226" transform="translate(186.5 367.93)">
       test
     </text>
   </g>
   <g id="accessible">
     <path fill="none" stroke="#9d28ce" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M292 355.4l-39-67.2 39-67.2h77.5l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#9d28ce" transform="translate(310 291.72)">
+    <text class="pro2 pro3" fill="#9d28ce" transform="translate(310 295.72)">
       dev
     </text>
   </g>
   <g id="valuable">
     <path fill="none" stroke="#186dea" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M168.2 283.2L129.4 216l38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
-    <text class="pro2 pro3" fill="#186dea" transform="translate(169.6 219.52)">
+    <text class="pro2 pro3" fill="#186dea" transform="translate(171.6 223.52)">
       repeat
     </text>
   </g>
