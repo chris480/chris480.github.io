@@ -375,7 +375,7 @@ main {
 	.grid-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr 3fr;
-		margin-bottom: 3rem;
+		margin-bottom: 3rem; 
 		min-height: 103vh;
 		@media only screen and (max-width: 30rem) {
 			grid-template-columns: 1fr
