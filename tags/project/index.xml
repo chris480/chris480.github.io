@@ -6,10 +6,19 @@
     <description>Recent content in project on Christopher Nguyen - UX Designer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://christopher-nguyen.com/tags/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blue Origin Design System</title>
+      <link>https://christopher-nguyen.com/portfolio/blue-origin/</link>
+      <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://christopher-nguyen.com/portfolio/blue-origin/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Cook Together</title>
