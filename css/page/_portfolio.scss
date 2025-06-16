@@ -24,9 +24,11 @@
 	header{		
 		&.portfolio-intro{
 			position: relative;
+			background-color: #000;
 			background-image: var(--bg-image);
 			background-size: cover;
 			background-position: bottom;	
+			overflow: hidden;
 			.container {
 				display: flex;
 				align-items: center;
@@ -35,6 +37,23 @@
 			.h2{
 				font-size: calc(1.93em + .25vw);
 				margin-inline-start: .5rem;
+				z-index: 2;
+			}
+		}
+		.video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;	
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0; left: 0; right: 0; bottom: 0;
+				background: rgba(0,0,0,0.4); /* semi-transparent overlay */
+				z-index: 1;
+				pointer-events: none;
 			}
 		}
 	}
@@ -50,10 +69,15 @@
 	}
 	ul{
 		list-style: disc;
+		color: var(--text);
+	}
+	ol {
+		color: var(--text);
 	}
 	h3,.h3,h4,.h4{
+		margin-top: 3em;
 		margin-block-start: 3rem;
-		margin-block-end: .25rem;
+		margin-block-end: .25rem;		
 	}
 
 	.portfolio-meta{
