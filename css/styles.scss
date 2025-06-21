@@ -579,8 +579,36 @@ main {
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
-  video {
-	display: none;
+/* Dual-screen portrait (like a book, hinge vertical) */
+@media (horizontal-viewport-segments: 2) {
+  body {
+    display: flex;
+    flex-direction: row;
+    background: #f0f0f0;
+  }
+  .main-content {
+    flex: 1;
+    margin-right: env(fold-left, 0px);
+  }
+  .sidebar {
+    flex: 1;
+    margin-left: env(fold-width, 0px);
+  }
+}
+
+/* Dual-screen landscape (hinge horizontal) */
+@media (vertical-viewport-segments: 2) {
+  body {
+    display: flex;
+    flex-direction: column;
+    background: #e0e0ff;
+  }
+  .main-content {
+    flex: 1;
+    margin-bottom: env(fold-top, 0px);
+  }
+  .sidebar {
+    flex: 1;
+    margin-top: env(fold-height, 0px);
   }
 }
