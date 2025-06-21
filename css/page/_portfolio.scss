@@ -1,0 +1,116 @@
+.portfolio-page{
+	nav{
+		text-align: center;
+		z-index: 2;
+		margin-top: 1em;
+		margin-block-start: 1rem;
+		margin-block-end: 3rem;		
+		h1{ 
+			font-size: 1.6rem;
+		}
+		ul{
+		    padding: 0;
+		    margin: 0 1em;
+			li{
+				display: inline-block;
+				margin: 0 0.25em;
+				min-width: 6ch;				
+			}
+		}  
+		.flex{
+			justify-content: space-between;
+		}
+	}
+	header{		
+		&.portfolio-intro{
+			position: relative;
+			background-color: #000;
+			background-image: var(--bg-image);
+			background-size: cover;
+			background-position: bottom;	
+			overflow: hidden;
+			.container {
+				display: flex;
+				align-items: center;
+				height: 50svh;
+			}
+			.h2{
+				font-size: calc(1.93em + .25vw);
+				margin-inline-start: .5rem;
+				z-index: 2;
+			}
+		}
+		.video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;	
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0; left: 0; right: 0; bottom: 0;
+				background: rgba(0,0,0,0.4); /* semi-transparent overlay */
+				z-index: 1;
+				pointer-events: none;
+			}
+		}
+	}
+	article{
+		margin-top: 1em;
+	}
+	figure{
+		display: inline-block;
+		margin-bottom: 1em;
+		img{
+			border: 1px solid #eee;
+		}
+	}
+	ul{
+		list-style: disc;
+		color: var(--text);
+	}
+	ol {
+		color: var(--text);
+	}
+	h3,.h3,h4,.h4{
+		margin-top: 3em;
+		margin-block-start: 3rem;
+		margin-block-end: .25rem;		
+	}
+
+	.portfolio-meta{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 3em;
+	}
+	.portfolio-body {
+		img {
+			width: 100%;
+			border-radius: .25rem;
+		}
+	}
+} 
+.portfolio-archive{
+	nav{
+		position: relative;
+	}
+}
+.other-works{
+	.grid{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));	
+		grid-gap: 1rem;	
+	}
+	figure{
+		h1{
+			font-size: 1.3rem;
+		}
+		a{
+			display: block;
+			height: 14rem;
+			overflow: hidden			
+		}
+	}
+}
