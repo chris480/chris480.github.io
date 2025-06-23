@@ -1,0 +1,48 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100">
+<style type="text/css">
+		rect{
+    fill: none;
+    stroke: #000;
+    stroke-width: .1em;
+		}
+
+	rect {
+		stroke-dasharray: 280;
+		stroke-dashoffset: -280;
+		animation: flash 2000ms linear 1 forwards ,stroker 2500ms linear 500ms 1 forwards;
+		stroke-linecap: square;
+	}
+	@keyframes flash {
+		0% {
+			opacity: 0;
+			stroke-dashoffset: 0;
+		}
+		10% {
+			opacity: 1;
+			stroke-dashoffset: 0;
+		}	
+		20% {
+			opacity: 0;
+			stroke-dashoffset: 0;
+		}					
+		30% {
+			opacity: 1;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			opacity: 1;
+			stroke-dashoffset: 0;
+		}					
+	}
+
+	@keyframes stroker {
+		0% {
+			stroke-dashoffset: -280;
+		}
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+</style>
+<rect x="15" y="15" transform="matrix(0.7071 0.7071 -0.7071 0.7071 50 -20.7107)" width="69" height="69"/>
+</svg>
