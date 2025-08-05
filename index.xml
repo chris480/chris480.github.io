@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Christopher Nguyen - UX Designer</title>
+    <title>Christopher Nguyen - Designer</title>
     <link>https://christopher-nguyen.com/</link>
-    <description>Recent content on Christopher Nguyen - UX Designer</description>
+    <description>Recent content on Christopher Nguyen - Designer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://christopher-nguyen.com/index.xml" rel="self" type="application/rss+xml" />
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>Portoflio</title>
+      <title>Portfolio</title>
       <link>https://christopher-nguyen.com/portfolio/</link>
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
