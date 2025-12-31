@@ -542,7 +542,14 @@ $radius-xl: 20px;
 						justify-self: center;
 					}
 
-					.stat-value {
+					// Reset default dl, dt, dd styles for semantic elements
+					dt, dd {
+						margin: 0;
+						padding: 0;
+					}
+
+					.stat-value,
+					dt.stat-value {
 						font-size: clamp(2.5rem, 5vw, 3.5rem);
 						font-weight: 800;
 						background: linear-gradient(135deg, var(--brand) 0%, var(--brand-secondary) 100%);
@@ -554,7 +561,8 @@ $radius-xl: 20px;
 						letter-spacing: -0.03em;
 					}
 
-					.stat-label {
+					.stat-label,
+					dd.stat-label {
 						font-size: 1rem;
 						color: color-mix(in srgb, var(--text) 70%, transparent);
 						font-weight: 500;

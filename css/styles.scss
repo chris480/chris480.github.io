@@ -392,6 +392,33 @@ main {
   transform: translateY(0);
   outline: 2px solid #fff;
 }
+
+// Screen reader only text (visually hidden but accessible)
+// Modern approach that works reliably across browsers
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+// Ensure sr-only works inside nav links (parent has position: relative)
+nav ul li a {
+  .sr-only {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+  }
+}
+
 .btn {
 	cursor: pointer;
 	background: var(--brand);
@@ -853,6 +880,9 @@ main {
 				box-shadow: $shadow-md;
 				border-color: $glass-border;
 			}
+			&:focus-within {
+					outline: 1px solid var(--brand);
+				}
 
 			header {
 				overflow: hidden;
@@ -871,6 +901,15 @@ main {
 					&:focus-visible {
 						outline: 2px solid var(--brand);
 						outline-offset: 4px;
+					}
+					
+					// Focus state for isometric-figure when link is focused
+					&:focus-visible .isometric-figure {
+						outline: 3px solid var(--brand);
+						outline-offset: 4px;
+						box-shadow: 0 0 0 4px rgba(var(--brand-rgb), 0.2),
+									0 0 20px rgba(var(--brand-rgb), 0.3);
+						transform: scale(1.05);
 					}
 				}
 				
@@ -897,6 +936,8 @@ main {
 					perspective: 1800px;
 					perspective-origin: 50% 35%;
 					transform-style: preserve-3d;
+					transition: $transition-smooth;
+					border-radius: $radius-md;
 					
 					.iso-img {
 						position: absolute;
@@ -936,7 +977,7 @@ main {
 						width: 32%;
 						height: auto;
 						max-height: 5.5rem;
-						left: 32%;
+						left: 27%;
 						top: 22%;
 						transform: translate(-50%, -50%) 
 									rotateY(-50deg) 
@@ -956,7 +997,7 @@ main {
 						right: 32%;
 						top: 22%;
 						transform: translate(75%, -25%) 
-									rotateY(-25deg) 
+									rotateY(-17deg) 
 									rotateX(18deg) 
 									translateZ(10px) 
 									scale(1.5);
@@ -971,7 +1012,7 @@ main {
 						height: auto;
 						max-height: 5rem;
 						left: 50%;
-						bottom: 15%;
+						bottom: 0%;
 						transform: translate(-50%, 25%) 
 									rotateY(-30deg) 
 									rotateX(40deg) 
@@ -1659,6 +1700,9 @@ main {
 			outline: 2px solid var(--brand);
 			outline-offset: 2px;
 		}
+		&:focus-within {
+			outline: 1px solid var(--brand);
+		}	
 	}
 	
 	.badge {
