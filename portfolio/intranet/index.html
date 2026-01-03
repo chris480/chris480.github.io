@@ -27,14 +27,18 @@
 <meta name=theme-color content="#3372DF">
 <link rel=icon type=image/svg+xml href=/images/favicon.svg>
 <link rel=apple-touch-icon href=/images/favicon.svg>
+<link rel=dns-prefetch href=https://fonts.googleapis.com>
+<link rel=dns-prefetch href=https://fonts.gstatic.com>
+<link rel=dns-prefetch href=https://www.googletagmanager.com>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href=/css/tiny/styles.css as=style>
+<link rel=preload href=/images/space-needle.svg as=image fetchpriority=low>
 <style>body,nav,h1,h2,h3,h4,h5{font-family:-apple-system,BlinkMacSystemFont,segoe ui,system-ui,sans-serif}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
 <link rel=stylesheet href=/css/tiny/styles.css>
 <script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https:\/\/christopher-nguyen.com#person","name":"Christopher Nguyen","url":"https:\/\/christopher-nguyen.com","sameAs":["\"https://www.linkedin.com/in/clnguyen\", \"https://twitter.com/chris480\", \"https://github.com/chris480/\""],"jobTitle":"UX Designer, Investor, Founder","worksFor":{"@type":"Organization","name":"Christopher Nguyen"},"email":"mail@christopher-nguyen.com","image":"https:\/\/christopher-nguyen.com\/images\/avatar.jpg"},{"@type":"WebSite","@id":"https:\/\/christopher-nguyen.com#website","url":"https:\/\/christopher-nguyen.com","name":"Christopher Nguyen - Designer","description":"Seattle Designer, Investor, Founder, Leading Beyond Pixels","publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"inLanguage":"en-US"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/intranet\/#portfolio","headline":"Edifecs Redesign Part 1 - Internal","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/intranet\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2015-12-05T00:00:00Z","dateModified":"2015-12-05T00:00:00Z"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/intranet\/#creativework","name":"Edifecs Redesign Part 1 - Internal","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/intranet\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"creator":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2015-12-05T00:00:00Z","dateModified":"2015-12-05T00:00:00Z","inLanguage":"en-US","keywords":"meta, project"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B" onerror="this.onerror=null"></script>
-<script>try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);const b=new URLSearchParams(window.location.search),a=b.get('p'),c={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(a){const b=a.trim().substring(0,100);gtag('event','resume_visit',{resume_source:b,event_category:'Resume Tracking',event_label:b,value:1})}gtag('config','G-DKBJMSEW0B',c)}catch(a){console.debug('Analytics initialization skipped')}</script>
+<script>window.addEventListener('load',function(){var a=document.createElement('script');a.async=!0,a.src='https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B',a.onerror=function(){this.onerror=null},document.head.appendChild(a),window.dataLayer=window.dataLayer||[];function b(){dataLayer.push(arguments)}b('js',new Date);const d=new URLSearchParams(window.location.search),c=d.get('p'),e={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(c){const a=c.trim().substring(0,100);b('event','resume_visit',{resume_source:a,event_category:'Resume Tracking',event_label:a,value:1})}b('config','G-DKBJMSEW0B',e)})</script>
 </head>
 <body>
 <a href=#main class=skip-link>Skip to main content</a>
@@ -103,11 +107,11 @@ SharePoint intranet and internal communication redesign project. Rebuilt to bett
 </div>
 </div>
 <figure class=hero-image>
-<img src=/images/sharepoint-final-thumb.jpg alt="Redesigned SharePoint intranet homepage" loading=lazy>
+<img src=/images/sharepoint-final-thumb.jpg alt="Redesigned SharePoint intranet homepage" loading=lazy decoding=async>
 <figcaption>Redesigned SharePoint intranet homepage</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-before-2013-thumb.jpg alt="Original SharePoint intranet" loading=lazy>
+<img src=/images/sharepoint-before-2013-thumb.jpg alt="Original SharePoint intranet" loading=lazy decoding=async>
 <figcaption>Original SharePoint intranet before redesign</figcaption>
 </figure>
 <section class=portfolio-section>
@@ -160,7 +164,7 @@ The project delivered comprehensive improvements across internal systems:
 <div class=detail-section>
 <h3>Research and Design</h3>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-survey.jpg alt="Employee survey results" loading=lazy>
+<img src=/images/sharepoint-survey.jpg alt="Employee survey results" loading=lazy decoding=async>
 <figcaption>Employee survey results informing design decisions</figcaption>
 </figure>
 <p>
@@ -189,7 +193,7 @@ Over the course of several quarters, the main landing page was redesigned and re
 <li>Office specific links</li>
 </ul>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-final-thumb.jpg alt="Intranet mockup" loading=lazy>
+<img src=/images/sharepoint-final-thumb.jpg alt="Intranet mockup" loading=lazy decoding=async>
 <figcaption>Wireframe mockup by Samuel Shen</figcaption>
 </figure>
 <h3>Department Pages</h3>
@@ -197,15 +201,15 @@ Over the course of several quarters, the main landing page was redesigned and re
 After rolling out the new homepage, each department site collection received redesigns for top level pages. Keeping each site collection at a high level consistent would allow any user to more easily navigate around. Before the redesign, each department site collection had its own design, layout, and information architecture.
 </p>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-sktech-thumb.jpg alt="Department site sketch" loading=lazy>
+<img src=/images/sharepoint-sktech-thumb.jpg alt="Department site sketch" loading=lazy decoding=async>
 <figcaption>Initial sketch for department site template</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-whiteboard-thumb.jpg alt="Whiteboard design session" loading=lazy>
+<img src=/images/sharepoint-whiteboard-thumb.jpg alt="Whiteboard design session" loading=lazy decoding=async>
 <figcaption>Whiteboard design session</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/sharepoint-department-thumb.jpg alt="Final department template" loading=lazy>
+<img src=/images/sharepoint-department-thumb.jpg alt="Final department template" loading=lazy decoding=async>
 <figcaption>Final department site template</figcaption>
 </figure>
 <p>
@@ -222,7 +226,7 @@ To tie the internal redesign efforts together, standardized communication system
 Company-wide emails are sent on a regular basis: event announcements, customer wins, internal classes, etc. For a long time in the company's history, no standard email template was enforced. The lack of cohesion meant the information being delivered to employees was very inconsistent. By creating unified email templates for internal use, the company could accomplish important goals: spread the new brand, provide consistent and digestible information to employees, and allow each department to have micro-branding to help set each other apart.
 </p>
 <figure class=portfolio-image>
-<img src=/images/email-thumb.jpg alt="Sample email template" loading=lazy>
+<img src=/images/email-thumb.jpg alt="Sample email template" loading=lazy decoding=async>
 <figcaption>Sample email template—dozens created in total</figcaption>
 </figure>
 <h3>Blogs</h3>
@@ -256,7 +260,6 @@ The SharePoint intranet and internal communication redesign successfully support
 <p>© Christopher Nguyen. All rights reserved.</p>
 </footer>
 </main>
-<script src=/js/preserve-query.js></script>
-<script src=/js/welcome-message.js></script>
+<script src=/js/app.min.js defer></script>
 </body>
 </html>

@@ -27,14 +27,18 @@
 <meta name=theme-color content="#3372DF">
 <link rel=icon type=image/svg+xml href=/images/favicon.svg>
 <link rel=apple-touch-icon href=/images/favicon.svg>
+<link rel=dns-prefetch href=https://fonts.googleapis.com>
+<link rel=dns-prefetch href=https://fonts.gstatic.com>
+<link rel=dns-prefetch href=https://www.googletagmanager.com>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href=/css/tiny/styles.css as=style>
+<link rel=preload href=/images/space-needle.svg as=image fetchpriority=low>
 <style>body,nav,h1,h2,h3,h4,h5{font-family:-apple-system,BlinkMacSystemFont,segoe ui,system-ui,sans-serif}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
 <link rel=stylesheet href=/css/tiny/styles.css>
 <script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https:\/\/christopher-nguyen.com#person","name":"Christopher Nguyen","url":"https:\/\/christopher-nguyen.com","sameAs":["\"https://www.linkedin.com/in/clnguyen\", \"https://twitter.com/chris480\", \"https://github.com/chris480/\""],"jobTitle":"UX Designer, Investor, Founder","worksFor":{"@type":"Organization","name":"Christopher Nguyen"},"email":"mail@christopher-nguyen.com","image":"https:\/\/christopher-nguyen.com\/images\/avatar.jpg"},{"@type":"WebSite","@id":"https:\/\/christopher-nguyen.com#website","url":"https:\/\/christopher-nguyen.com","name":"Christopher Nguyen - Designer","description":"Seattle Designer, Investor, Founder, Leading Beyond Pixels","publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"inLanguage":"en-US"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/hopon\/#portfolio","headline":"Hop on Hop off","description":"This was a cool piece of code that I wrote","url":"https:\/\/christopher-nguyen.com\/portfolio\/hopon\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2015-02-10T00:00:00Z","dateModified":"2015-02-10T00:00:00Z"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/hopon\/#creativework","name":"Hop on Hop off","description":"This was a cool piece of code that I wrote","url":"https:\/\/christopher-nguyen.com\/portfolio\/hopon\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"creator":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2015-02-10T00:00:00Z","dateModified":"2015-02-10T00:00:00Z","inLanguage":"en-US","keywords":"project"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B" onerror="this.onerror=null"></script>
-<script>try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);const b=new URLSearchParams(window.location.search),a=b.get('p'),c={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(a){const b=a.trim().substring(0,100);gtag('event','resume_visit',{resume_source:b,event_category:'Resume Tracking',event_label:b,value:1})}gtag('config','G-DKBJMSEW0B',c)}catch(a){console.debug('Analytics initialization skipped')}</script>
+<script>window.addEventListener('load',function(){var a=document.createElement('script');a.async=!0,a.src='https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B',a.onerror=function(){this.onerror=null},document.head.appendChild(a),window.dataLayer=window.dataLayer||[];function b(){dataLayer.push(arguments)}b('js',new Date);const d=new URLSearchParams(window.location.search),c=d.get('p'),e={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(c){const a=c.trim().substring(0,100);b('event','resume_visit',{resume_source:a,event_category:'Resume Tracking',event_label:a,value:1})}b('config','G-DKBJMSEW0B',e)})</script>
 </head>
 <body>
 <a href=#main class=skip-link>Skip to main content</a>
@@ -56,7 +60,6 @@ eee
 <p>© Christopher Nguyen. All rights reserved.</p>
 </footer>
 </main>
-<script src=/js/preserve-query.js></script>
-<script src=/js/welcome-message.js></script>
+<script src=/js/app.min.js defer></script>
 </body>
 </html>

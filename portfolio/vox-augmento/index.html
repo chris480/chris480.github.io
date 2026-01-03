@@ -27,14 +27,18 @@
 <meta name=theme-color content="#3372DF">
 <link rel=icon type=image/svg+xml href=/images/favicon.svg>
 <link rel=apple-touch-icon href=/images/favicon.svg>
+<link rel=dns-prefetch href=https://fonts.googleapis.com>
+<link rel=dns-prefetch href=https://fonts.gstatic.com>
+<link rel=dns-prefetch href=https://www.googletagmanager.com>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href=/css/tiny/styles.css as=style>
+<link rel=preload href=/images/space-needle.svg as=image fetchpriority=low>
 <style>body,nav,h1,h2,h3,h4,h5{font-family:-apple-system,BlinkMacSystemFont,segoe ui,system-ui,sans-serif}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
 <link rel=stylesheet href=/css/tiny/styles.css>
 <script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https:\/\/christopher-nguyen.com#person","name":"Christopher Nguyen","url":"https:\/\/christopher-nguyen.com","sameAs":["\"https://www.linkedin.com/in/clnguyen\", \"https://twitter.com/chris480\", \"https://github.com/chris480/\""],"jobTitle":"UX Designer, Investor, Founder","worksFor":{"@type":"Organization","name":"Christopher Nguyen"},"email":"mail@christopher-nguyen.com","image":"https:\/\/christopher-nguyen.com\/images\/avatar.jpg"},{"@type":"WebSite","@id":"https:\/\/christopher-nguyen.com#website","url":"https:\/\/christopher-nguyen.com","name":"Christopher Nguyen - Designer","description":"Seattle Designer, Investor, Founder, Leading Beyond Pixels","publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"inLanguage":"en-US"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/vox-augmento\/#portfolio","headline":"VR Hackathon - Vox Augment ","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/vox-augmento\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2017-06-23T02:27:08Z","dateModified":"2017-06-23T02:27:08Z"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/vox-augmento\/#creativework","name":"VR Hackathon - Vox Augment ","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/vox-augmento\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"creator":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2017-06-23T02:27:08Z","dateModified":"2017-06-23T02:27:08Z","inLanguage":"en-US","keywords":"meta, project"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B" onerror="this.onerror=null"></script>
-<script>try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);const b=new URLSearchParams(window.location.search),a=b.get('p'),c={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(a){const b=a.trim().substring(0,100);gtag('event','resume_visit',{resume_source:b,event_category:'Resume Tracking',event_label:b,value:1})}gtag('config','G-DKBJMSEW0B',c)}catch(a){console.debug('Analytics initialization skipped')}</script>
+<script>window.addEventListener('load',function(){var a=document.createElement('script');a.async=!0,a.src='https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B',a.onerror=function(){this.onerror=null},document.head.appendChild(a),window.dataLayer=window.dataLayer||[];function b(){dataLayer.push(arguments)}b('js',new Date);const d=new URLSearchParams(window.location.search),c=d.get('p'),e={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(c){const a=c.trim().substring(0,100);b('event','resume_visit',{resume_source:a,event_category:'Resume Tracking',event_label:a,value:1})}b('config','G-DKBJMSEW0B',e)})</script>
 </head>
 <body>
 <a href=#main class=skip-link>Skip to main content</a>
@@ -103,7 +107,7 @@ Vox Augmento represents an attempt to leverage VR technology for creative musica
 </div>
 </div>
 <figure class=hero-image>
-<img src=/images/vox1.jpg alt="Vox Augmento VR music interface" loading=lazy>
+<img src=/images/vox1.jpg alt="Vox Augmento VR music interface" loading=lazy decoding=async>
 <figcaption>Vox Augmento VR music interface</figcaption>
 </figure>
 <figure class=portfolio-image>
@@ -161,7 +165,7 @@ We selected technologies that enabled real-time audio processing and immersive V
 <div class=detail-section>
 <h3>Design Philosophy</h3>
 <figure class=portfolio-image>
-<img src=/images/voxThink.jpg alt="Design thinking and concepts" loading=lazy>
+<img src=/images/voxThink.jpg alt="Design thinking and concepts" loading=lazy decoding=async>
 <figcaption>Design thinking and concept exploration</figcaption>
 </figure>
 <p>
@@ -182,7 +186,7 @@ The design was guided by several key principles:
 The MVP allowed users to paint what they speak as if placing a waveform in air. Moving the controller higher raises pitch, lowering it decreases pitch. Colliding with the painted waveform replays the sound. The visual setting places users on a rock landscape platform, with a bone musical wand controller representing an ancient paintbrush.
 </p>
 <figure class=portfolio-image>
-<img src=/images/voxTest.jpg alt="Testing and iteration" loading=lazy>
+<img src=/images/voxTest.jpg alt="Testing and iteration" loading=lazy decoding=async>
 <figcaption>Testing and iteration process</figcaption>
 </figure>
 <div class=benefits-grid>
@@ -212,11 +216,11 @@ The instrument makes its limits and functions easily discoverable, encouraging b
 Development followed a three-step approach: First, establishing real-time link between Unity and Max/MSP to get controller and collision data into the audio engine. Second, parallel development to produce working assets and interactions, including recording, modulation, and controller movement mapping. Third, polish and final touches for the hackathon demo.
 </p>
 <figure class=portfolio-image>
-<img src=/images/voxDev.jpg alt="Development process" loading=lazy>
+<img src=/images/voxDev.jpg alt="Development process" loading=lazy decoding=async>
 <figcaption>Development and integration work</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/voxEditor.jpg alt="Editor interface" loading=lazy>
+<img src=/images/voxEditor.jpg alt="Editor interface" loading=lazy decoding=async>
 <figcaption>Editor interface for sound manipulation</figcaption>
 </figure>
 </section>
@@ -238,7 +242,7 @@ The project achieved recognition and demonstrated the potential of VR for musica
 Users were handed one controller with little instruction beyond the intent of the app. The goal was discovery—the usage and discovery was something developers couldn't fully predict. The demo evoked new usages and practices not initially envisioned.
 </p>
 <figure class=portfolio-image>
-<img src=/images/voxDemo.png alt="Vox Augmento demo" loading=lazy>
+<img src=/images/voxDemo.png alt="Vox Augmento demo" loading=lazy decoding=async>
 <figcaption><a href="https://www.youtube.com/watch?v=SI257lXzN2w" target=_blank>Watch the full demo video</a></figcaption>
 </figure>
 </section>
@@ -255,7 +259,6 @@ Vox Augmento demonstrated that VR technology can create entirely new forms of mu
 <p>© Christopher Nguyen. All rights reserved.</p>
 </footer>
 </main>
-<script src=/js/preserve-query.js></script>
-<script src=/js/welcome-message.js></script>
+<script src=/js/app.min.js defer></script>
 </body>
 </html>

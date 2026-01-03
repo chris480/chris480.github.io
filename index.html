@@ -27,14 +27,18 @@
 <meta name=theme-color content="#3372DF">
 <link rel=icon type=image/svg+xml href=/images/favicon.svg>
 <link rel=apple-touch-icon href=/images/favicon.svg>
+<link rel=dns-prefetch href=https://fonts.googleapis.com>
+<link rel=dns-prefetch href=https://fonts.gstatic.com>
+<link rel=dns-prefetch href=https://www.googletagmanager.com>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href=/css/tiny/styles.css as=style>
+<link rel=preload href=/images/space-needle.svg as=image fetchpriority=low>
 <style>body,nav,h1,h2,h3,h4,h5{font-family:-apple-system,BlinkMacSystemFont,segoe ui,system-ui,sans-serif}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
 <link rel=stylesheet href=/css/tiny/styles.css>
 <script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https:\/\/christopher-nguyen.com#person","name":"Christopher Nguyen","url":"https:\/\/christopher-nguyen.com","sameAs":["\"https://www.linkedin.com/in/clnguyen\", \"https://twitter.com/chris480\", \"https://github.com/chris480/\""],"jobTitle":"UX Designer, Investor, Founder","worksFor":{"@type":"Organization","name":"Christopher Nguyen"},"email":"mail@christopher-nguyen.com","image":"https:\/\/christopher-nguyen.com\/images\/avatar.jpg"},{"@type":"WebSite","@id":"https:\/\/christopher-nguyen.com#website","url":"https:\/\/christopher-nguyen.com","name":"Christopher Nguyen - Designer","description":"Seattle Designer, Investor, Founder, Leading Beyond Pixels","publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"inLanguage":"en-US"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B" onerror="this.onerror=null"></script>
-<script>try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);const b=new URLSearchParams(window.location.search),a=b.get('p'),c={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(a){const b=a.trim().substring(0,100);gtag('event','resume_visit',{resume_source:b,event_category:'Resume Tracking',event_label:b,value:1})}gtag('config','G-DKBJMSEW0B',c)}catch(a){console.debug('Analytics initialization skipped')}</script>
+<script>window.addEventListener('load',function(){var a=document.createElement('script');a.async=!0,a.src='https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B',a.onerror=function(){this.onerror=null},document.head.appendChild(a),window.dataLayer=window.dataLayer||[];function b(){dataLayer.push(arguments)}b('js',new Date);const d=new URLSearchParams(window.location.search),c=d.get('p'),e={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(c){const a=c.trim().substring(0,100);b('event','resume_visit',{resume_source:a,event_category:'Resume Tracking',event_label:a,value:1})}b('config','G-DKBJMSEW0B',e)})</script>
 </head>
 <body>
 <a href=#main class=skip-link>Skip to main content</a>
@@ -90,10 +94,10 @@
 <a href=/portfolio/blue-origin>
 <h2>Blue Origin</h2>
 <figure class=isometric-figure aria-label="Blue Origin portfolio preview images">
-<img src=/images/help-start-iso.webp alt="ERP interface built using design system elements" loading=lazy class="iso-img iso-main">
-<img src=/images/chatbot-iso.webp alt="AI chatbot interface" loading=lazy class="iso-img iso-left">
-<img src=/images/princples-half-iso.webp alt="Design system principles and values" loading=lazy class="iso-img iso-right">
-<img src=/images/bg-blue-iso.webp alt loading=lazy class="iso-img iso-back" role=presentation>
+<img src=/images/help-start-iso.webp alt="ERP interface built using design system elements" loading=lazy decoding=async class="iso-img iso-main">
+<img src=/images/chatbot-iso.webp alt="AI chatbot interface" loading=lazy decoding=async class="iso-img iso-left">
+<img src=/images/princples-half-iso.webp alt="Design system principles and values" loading=lazy decoding=async class="iso-img iso-right">
+<img src=/images/bg-blue-iso.webp alt loading=lazy decoding=async class="iso-img iso-back" role=presentation>
 </figure>
 </a>
 </header>
@@ -105,9 +109,9 @@
 <h2>Actuate Ventures</h2>
 <figure class=isometric-figure aria-label="Actuate Ventures portfolio preview">
 <video src=/images/Actuate-iso.webm autoplay loop muted playsinline class="iso-img iso-main" aria-label="Actuate Ventures product demo video" title="Actuate Ventures product demo"></video>
-<img src=/images/uv-iso.webp alt="Drone inspection dashboard interface" loading=lazy class="iso-img iso-left">
-<img src=/images/drone-iso.webp alt="Flight path telemetry visualization" loading=lazy class="iso-img iso-right">
-<img src=/images/av-slide-iso.webp alt loading=lazy class="iso-img iso-back" role=presentation>
+<img src=/images/uv-iso.webp alt="Drone inspection dashboard interface" loading=lazy decoding=async class="iso-img iso-left">
+<img src=/images/drone-iso.webp alt="Flight path telemetry visualization" loading=lazy decoding=async class="iso-img iso-right">
+<img src=/images/av-slide-iso.webp alt loading=lazy decoding=async class="iso-img iso-back" role=presentation>
 </figure>
 </a>
 </header>
@@ -118,10 +122,10 @@
 <a href=/portfolio/roundglass>
 <h2>RoundGlass</h2>
 <figure class=isometric-figure aria-label="RoundGlass portfolio preview">
-<img src=/images/rg_ds-iso.webp alt="Design system documentation and component library" loading=lazy class="iso-img iso-main">
-<img src=/images/rg-ds-iso.webp alt="Design system components" loading=lazy class="iso-img iso-left">
-<img src=/images/roundglass-sitebuilder-iso.webp alt="Site builder interface" loading=lazy class="iso-img iso-right">
-<img src="/images/RG Booking Mobile iso.webp" alt="Mobile app interface" loading=lazy class="iso-img iso-back">
+<img src=/images/rg_ds-iso.webp alt="Design system documentation and component library" loading=lazy decoding=async class="iso-img iso-main">
+<img src=/images/rg-ds-iso.webp alt="Design system components" loading=lazy decoding=async class="iso-img iso-left">
+<img src=/images/roundglass-sitebuilder-iso.webp alt="Site builder interface" loading=lazy decoding=async class="iso-img iso-right">
+<img src="/images/RG Booking Mobile iso.webp" alt="Mobile app interface" loading=lazy decoding=async class="iso-img iso-back">
 </figure>
 </a>
 </header>
@@ -150,7 +154,7 @@ My career has taken me from hands-on engineering to UX leadership, Venture Capit
 </div>
 <figure class=sub-image>
 <a href=/images/panel-full.jpg target=_blank>
-<img src="/images/panel 1.webp" width=800 alt="Christopher hosting a panel discussion on future tech and design" loading=lazy>
+<img src=/images/panel-1.webp width=800 height=600 alt="Christopher hosting a panel discussion on future tech and design" loading=lazy decoding=async>
 </a>
 <figcaption>Christopher hosting a panel discussion on future tech and design</figcaption>
 </figure>
@@ -180,13 +184,10 @@ My career has taken me from hands-on engineering to UX leadership, Venture Capit
 <p>
 I know what it's like to be in the trenches at a startup, where every decision matters and resources are always tight. That experience taught me to move fast, adapt quickly, and never lose sight of what really matters for users and the business. I love working with both designers and engineers, bridging creative ideas and technical realities, and building a culture where people feel empowered to do their best work.
 </p>
-<p>
-Whether I'm leading a team of ten or collaborating with a small group, I care deeply about building trust, encouraging independence, and making sure everyone's voice is heard. My approach is collaborative, hands-on, and always focused on real results.
-</p>
 </div>
 <figure class=sub-image>
 <a href=/images/rg-home.webp target=_blank>
-<img src=/images/rg-home.webp width=800 alt="RoundGlass Collective homepage framed into a laptop" loading=lazy>
+<img src=/images/rg-home.webp width=800 height=600 alt="RoundGlass Collective homepage framed into a laptop" loading=lazy decoding=async>
 </a>
 <figcaption>RoundGlass Collective homepage framed into a laptop</figcaption>
 </figure>
@@ -202,7 +203,7 @@ I've helped startups go from months-long development cycles to launching in days
 </div>
 <figure class=sub-image>
 <a href=/images/impact.webp target=_blank>
-<img src=/images/impact.webp width=800 alt="Screenshots of code and design system prototype" loading=lazy>
+<img src=/images/impact.webp width=800 height=600 alt="Screenshots of code and design system prototype" loading=lazy decoding=async>
 </a>
 <figcaption>Screenshots of code and design system prototype</figcaption>
 </figure>
@@ -218,7 +219,7 @@ I'm not just a designer, engineer, or product manager, I'm a true partner in you
 </div>
 <figure class=sub-image>
 <a href=/images/me.webp target=_blank>
-<img src=/images/me.webp width=800 alt="Christopher Nguyen in the middle with others during a networking event" loading=lazy>
+<img src=/images/me.webp width=800 height=600 alt="Christopher Nguyen in the middle with others during a networking event" loading=lazy decoding=async>
 </a>
 <figcaption>Myself in the middle and others during a networking event</figcaption>
 </figure>
@@ -266,7 +267,6 @@ Email: <a href=mailto:mail@christopher-nguyen.com>mail@christopher-nguyen.com</a
 <p>© Christopher Nguyen. All rights reserved.</p>
 </footer>
 </main>
-<script src=/js/preserve-query.js></script>
-<script src=/js/welcome-message.js></script>
+<script src=/js/app.min.js defer></script>
 </body>
 </html>

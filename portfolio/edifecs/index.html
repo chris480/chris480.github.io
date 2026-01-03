@@ -27,14 +27,18 @@
 <meta name=theme-color content="#3372DF">
 <link rel=icon type=image/svg+xml href=/images/favicon.svg>
 <link rel=apple-touch-icon href=/images/favicon.svg>
+<link rel=dns-prefetch href=https://fonts.googleapis.com>
+<link rel=dns-prefetch href=https://fonts.gstatic.com>
+<link rel=dns-prefetch href=https://www.googletagmanager.com>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload href=/css/tiny/styles.css as=style>
+<link rel=preload href=/images/space-needle.svg as=image fetchpriority=low>
 <style>body,nav,h1,h2,h3,h4,h5{font-family:-apple-system,BlinkMacSystemFont,segoe ui,system-ui,sans-serif}</style>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
 <link rel=stylesheet href=/css/tiny/styles.css>
 <script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https:\/\/christopher-nguyen.com#person","name":"Christopher Nguyen","url":"https:\/\/christopher-nguyen.com","sameAs":["\"https://www.linkedin.com/in/clnguyen\", \"https://twitter.com/chris480\", \"https://github.com/chris480/\""],"jobTitle":"UX Designer, Investor, Founder","worksFor":{"@type":"Organization","name":"Christopher Nguyen"},"email":"mail@christopher-nguyen.com","image":"https:\/\/christopher-nguyen.com\/images\/avatar.jpg"},{"@type":"WebSite","@id":"https:\/\/christopher-nguyen.com#website","url":"https:\/\/christopher-nguyen.com","name":"Christopher Nguyen - Designer","description":"Seattle Designer, Investor, Founder, Leading Beyond Pixels","publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"inLanguage":"en-US"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/edifecs\/#portfolio","headline":"Edifecs Redesign Part 2 - Web","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/edifecs\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"publisher":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2016-01-05T02:27:08Z","dateModified":"2016-01-05T02:27:08Z"},{"@type":"CreativeWork","@id":"https:\/\/christopher-nguyen.com\/portfolio\/edifecs\/#creativework","name":"Edifecs Redesign Part 2 - Web","description":"Description of the sample project","url":"https:\/\/christopher-nguyen.com\/portfolio\/edifecs\/","author":{"@id":"https:\/\/christopher-nguyen.com#person"},"creator":{"@id":"https:\/\/christopher-nguyen.com#person"},"datePublished":"2016-01-05T02:27:08Z","dateModified":"2016-01-05T02:27:08Z","inLanguage":"en-US","keywords":"meta, project"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B" onerror="this.onerror=null"></script>
-<script>try{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);const b=new URLSearchParams(window.location.search),a=b.get('p'),c={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(a){const b=a.trim().substring(0,100);gtag('event','resume_visit',{resume_source:b,event_category:'Resume Tracking',event_label:b,value:1})}gtag('config','G-DKBJMSEW0B',c)}catch(a){console.debug('Analytics initialization skipped')}</script>
+<script>window.addEventListener('load',function(){var a=document.createElement('script');a.async=!0,a.src='https://www.googletagmanager.com/gtag/js?id=G-DKBJMSEW0B',a.onerror=function(){this.onerror=null},document.head.appendChild(a),window.dataLayer=window.dataLayer||[];function b(){dataLayer.push(arguments)}b('js',new Date);const d=new URLSearchParams(window.location.search),c=d.get('p'),e={send_page_view:!0,page_path:window.location.pathname+window.location.search,page_location:window.location.href};if(c){const a=c.trim().substring(0,100);b('event','resume_visit',{resume_source:a,event_category:'Resume Tracking',event_label:a,value:1})}b('config','G-DKBJMSEW0B',e)})</script>
 </head>
 <body>
 <a href=#main class=skip-link>Skip to main content</a>
@@ -103,11 +107,11 @@ Rebuilding and redesigning the main corporate site over the course of a year+. M
 </div>
 </div>
 <figure class=hero-image>
-<img src=/images/esite-solution-thumb.jpg alt="Redesigned solution page" loading=lazy>
+<img src=/images/esite-solution-thumb.jpg alt="Redesigned solution page" loading=lazy decoding=async>
 <figcaption>Redesigned solution page with improved layout and content structure</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/esite-solution-original-thumb.jpg alt="Original 2010 solution page" loading=lazy>
+<img src=/images/esite-solution-original-thumb.jpg alt="Original 2010 solution page" loading=lazy decoding=async>
 <figcaption>Original 2010 solution page before redesign</figcaption>
 </figure>
 <section class=portfolio-section>
@@ -124,7 +128,7 @@ The site (1.0) was built in 2010 and did not receive any major updates until the
 <li>SEO and SEM problems affecting discoverability</li>
 </ul>
 <figure class=portfolio-image>
-<img src=/images/esite-notes.jpg alt="Project notes and planning" loading=lazy>
+<img src=/images/esite-notes.jpg alt="Project notes and planning" loading=lazy decoding=async>
 <figcaption>Project planning and research notes</figcaption>
 </figure>
 </section>
@@ -197,11 +201,11 @@ Two primary design goals were achieved: tell a better, more cohesive story on th
 Company homepages are often the first page a new or returning user lands on. 2.0's homepage uses a concept of <strong>100% sections</strong>. It's often difficult to deliver a direct message when a large B2B company offers many solutions. By using the 100% method, only one direct message is used per section. Scrolling slides the user into the next or previous section. Content and messaging don't have to fight one another.
 </p>
 <figure class=portfolio-image>
-<img src=/images/esite-homepage-original-thumb.jpg alt="Original 2011 homepage" loading=lazy>
+<img src=/images/esite-homepage-original-thumb.jpg alt="Original 2011 homepage" loading=lazy decoding=async>
 <figcaption>Original 2011 homepage</figcaption>
 </figure>
 <figure class=portfolio-image>
-<img src=/images/esite-homepage-final-thumb.jpg alt="Redesigned homepage" loading=lazy>
+<img src=/images/esite-homepage-final-thumb.jpg alt="Redesigned homepage" loading=lazy decoding=async>
 <figcaption>Redesigned homepage with 100% section approach</figcaption>
 </figure>
 <h3>Solution and Resources</h3>
@@ -209,14 +213,14 @@ Company homepages are often the first page a new or returning user lands on. 2.0
 The product solution pages are key pages on edifecs.com because of the information they deliver. For companies like Edifecs, where sales cycles happen over many months or even years, users often come back to these solution pages for information. Selling products is not as good a strategy as selling solutions, and the pages were designed with that in mind.
 </p>
 <figure class=portfolio-image>
-<img src=/images/esite-whiteboard.jpg alt="Whiteboarding page layouts" loading=lazy>
+<img src=/images/esite-whiteboard.jpg alt="Whiteboarding page layouts" loading=lazy decoding=async>
 <figcaption>Whiteboarding and layout planning</figcaption>
 </figure>
 <p>
 By better standardizing page layouts, product owners and stakeholders could more easily produce consistent content. Many rules were set up to keep content limited but meaningful: word count ranges, stricter body copy guidelines, and graphics and diagram standards.
 </p>
 <figure class=portfolio-image>
-<img src=/images/esite-resources.jpg alt="Resource design system" loading=lazy>
+<img src=/images/esite-resources.jpg alt="Resource design system" loading=lazy decoding=async>
 <figcaption>Resource design system with color-coded labeling</figcaption>
 </figure>
 <h3>Trainings</h3>
@@ -224,7 +228,7 @@ By better standardizing page layouts, product owners and stakeholders could more
 A large new offering within 2.0 is a stronger education section. Solutions like Edifecs' require a level of mastery achieved through training and practice. Enterprise software purchasers know this, and when vetting solutions look to the complete support cycle offered. An entire microsite was designed to allow users to get the training they needed.
 </p>
 <figure class=portfolio-image>
-<img src=/images/esite-courses.jpg alt="Training courses interface" loading=lazy>
+<img src=/images/esite-courses.jpg alt="Training courses interface" loading=lazy decoding=async>
 <figcaption>Training and certificate program interface</figcaption>
 </figure>
 </section>
@@ -243,7 +247,7 @@ Both the front and backend were overhauled during development. Because all conte
 <strong>Integrations:</strong> Marketing automation solutions like Marketo were heavily used. The front and backend had these integrations in mind when being written, ensuring the company's business needs were supported without degrading user experience for site visitors.
 </p>
 <figure class=portfolio-image>
-<img src=/images/esite-timelines.jpg alt="Project timelines" loading=lazy>
+<img src=/images/esite-timelines.jpg alt="Project timelines" loading=lazy decoding=async>
 <figcaption>Content sprints and project timelines</figcaption>
 </figure>
 </section>
@@ -273,7 +277,6 @@ Completing design and development of the corporate website did not mean it was f
 <p>© Christopher Nguyen. All rights reserved.</p>
 </footer>
 </main>
-<script src=/js/preserve-query.js></script>
-<script src=/js/welcome-message.js></script>
+<script src=/js/app.min.js defer></script>
 </body>
 </html>
