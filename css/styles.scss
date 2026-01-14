@@ -238,7 +238,7 @@ nav{
 		ul {
 			flex-wrap: wrap;
 			justify-content: center;
-			gap: 0.25rem;
+			gap: 0.0;
 			
 			li a {
 				padding: 0.4rem 0.9rem;
@@ -259,7 +259,7 @@ nav{
 		
 		ul {
 			li a {
-				padding: 0.35rem 0.7rem;
+				padding: 0.25rem 0.6rem;
 				font-size: 0.85rem;
 			}
 		}
@@ -1624,7 +1624,7 @@ nav ul li a {
 		
 		.highlight-card {
 			position: relative;
-			flex: 1 1 280px;
+			flex: 1 1 12rem;
 			min-width: 17.5rem;
 			max-width: 100%;
 			padding: 1.5rem;
