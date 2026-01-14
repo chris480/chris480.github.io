@@ -2173,7 +2173,7 @@ nav ul li a {
 			word-wrap: break-word;
 			font-size: 0.9rem;
 			max-width: 85%;
-			
+			color: var(--text);
 			@media only screen and (max-width: 48rem) {
 				max-width: 90%;
 			}

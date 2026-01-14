@@ -87,9 +87,7 @@
     };
 
     // API Configuration
-    const API_KEY = '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';
-    const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-    const MODEL = 'deepseek/deepseek-chat';
+    const API_URL = 'https://api.chrisle.design';
 
     // State
     let jobSourceUrl = null;
@@ -202,17 +200,13 @@
             // Build system prompt
             const systemPrompt = buildSystemPrompt();
 
-            // Call OpenRouter API
+            // Call Cloudflare Worker API (proxies to OpenRouter)
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${API_KEY}`,
-                    'HTTP-Referer': window.location.origin,
-                    'X-Title': 'Chris Le Nguyen Portfolio'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    model: MODEL,
                     messages: [
                         {
                             role: 'system',

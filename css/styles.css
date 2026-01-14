@@ -2731,6 +2731,7 @@ nav ul li a .sr-only {
   word-wrap: break-word;
   font-size: 0.9rem;
   max-width: 85%;
+  color: var(--text);
 }
 @media only screen and (max-width: 48rem) {
   .llm-chat .chat-message .message-content {
