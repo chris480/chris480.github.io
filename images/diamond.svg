@@ -1,0 +1,38 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000">
+	<style>
+		rect{
+    fill: none;
+    stroke: #333;
+    stroke-width: 2em;
+    transform: rotate(45deg);
+    transform-origin: center center;
+		}
+
+	rect {
+		stroke-dasharray: 5191;
+		stroke-dashoffset: -4300;
+		animation: stroker 2500ms linear 0ms 1 forwards;
+	}
+
+	@keyframes stroker {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	@keyframes cWMwcmAZ_draw_0 {
+		11.11111111111111% {
+			stroke-dashoffset: -4000
+		}
+		38.88888888888889% {
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke-dashoffset: 100;
+		}
+	}
+
+	</style>
+	
+<rect x="0" y="0" width="100%" height="100%" />
+</svg>
