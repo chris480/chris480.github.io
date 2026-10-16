@@ -9,21 +9,26 @@ $transition-fast: all 0.3s ease;
 $transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 $transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
-// Common border radius values
-$radius-sm: 8px;
-$radius-md: 12px;
-$radius-lg: 16px;
-$radius-xl: 20px;
-$radius-2xl: 24px;
-$radius-full: 50px;
+// Common border radius values (kept tight, closer to Actuate's squared-off look)
+$radius-sm: 2px;
+$radius-md: 3px;
+$radius-lg: 4px;
+$radius-xl: 4px;
+$radius-2xl: 6px;
+$radius-full: 4px;
+
+// Type families
+$font-display: 'Questrial', 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+$font-body: 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+$font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
 // Common rgba values
 $glass-bg: rgba(255, 255, 255, 0.1);
 $glass-bg-hover: rgba(255, 255, 255, 0.15);
 $glass-border: rgba(255, 255, 255, 0.2);
 $glass-border-hover: rgba(255, 255, 255, 0.25);
-$shadow-sm: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-$shadow-md: 0 16px 48px 0 rgba(31, 38, 135, 0.25);
+$shadow-sm: 0 8px 24px 0 rgba(7, 10, 18, 0.12);
+$shadow-md: 0 14px 36px 0 rgba(7, 10, 18, 0.22);
 
 // Mixins
 @mixin gradient-text {
@@ -47,7 +52,7 @@ $shadow-md: 0 16px 48px 0 rgba(31, 38, 135, 0.25);
 		height: $height;
 		margin-top: $margin-top;
 		background: linear-gradient(90deg, var(--brand), var(--brand-secondary));
-		border-radius: 2px;
+		border-radius: 0;
 	}
 }
 
@@ -55,20 +60,20 @@ $shadow-md: 0 16px 48px 0 rgba(31, 38, 135, 0.25);
 	box-sizing: border-box;
 }
 :root {
---background: 256, 256, 256;
---border: #fff;
---text: #111;
---link: #333;
---brand: #284bae;
---brand-rgb: 40, 76, 174;
---brand-secondary: hsl(144.09deg 50.2% 49.61%);
---brand-secondary-rgb: 90, 174, 126;
+--background: 247, 248, 250;
+--border: #d1d5db;
+--text: #0d111c;
+--link: #1a1e2e;
+--brand: #0077b6;
+--brand-rgb: 0, 119, 182;
+--brand-secondary: #1f8a4c;
+--brand-secondary-rgb: 31, 138, 76;
 }
 
 body {
 	background-color: rgba(var(--background), 1);
 	font-size: calc(1rem + .25vw);
-	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+	font-family: $font-body;
 	padding-left: 0.625rem;
 	padding-right: 0.625rem;
 	position: relative;
@@ -93,6 +98,10 @@ body {
 			width: 12rem;
 			height: 48rem;
 		}
+	}
+	
+	&.is-home::after {
+		display: none;
 	}
 }
 footer {
@@ -224,7 +233,7 @@ nav{
 	nav {
 		padding: 0.75rem 1.25rem;
 		margin: 0.5rem;
-		border-radius: 16px;
+		border-radius: $radius-lg;
 		
 		.flex {
 			gap: 1rem;
@@ -250,7 +259,7 @@ nav{
 @media only screen and (max-width: 480px) {
 	nav {
 		padding: 0.6rem 1rem;
-		border-radius: 12px;
+		border-radius: $radius-md;
 		
 		h1 {
 			font-size: 1.2rem;
@@ -270,7 +279,9 @@ h2,
 h3,
 h4,
 h5 {
-	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, serif;
+	font-family: $font-display;
+	font-weight: 400;
+	letter-spacing: -0.01em;
 	margin: 0;
 	color: var(--text);
 }
@@ -423,7 +434,7 @@ nav ul li a {
 	background: var(--brand);
 	color: #000;
 	height: 3rem;
-    border-radius: .25rem;
+    border-radius: $radius-sm;
 	font-weight: 600;
 	&:active,
 	&:focus {
@@ -460,281 +471,9 @@ nav ul li a {
 	min-height: 45vh;
 	padding: 4rem 2rem;
 	position: relative;
-	overflow: hidden;
-	background: linear-gradient(135deg, rgba(var(--background), 1) 0%, rgba(var(--background), 0.95) 100%);
-	
-	// Edge fade mask - fades top and bottom to transparent
-	mask-image: linear-gradient(
-		to bottom,
-		transparent 0%,
-		black 8%,
-		black 92%,
-		transparent 100%
-	);
-	-webkit-mask-image: linear-gradient(
-		to bottom,
-		transparent 0%,
-		black 8%,
-		black 92%,
-		transparent 100%
-	);
-	
-	// Subtle background pattern
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: 
-			radial-gradient(circle at 20% 50%, rgba(var(--brand-rgb), 0.03) 0%, transparent 50%),
-			radial-gradient(circle at 80% 80%, rgba(var(--brand-rgb), 0.03) 0%, transparent 50%);
-		pointer-events: none;
-		z-index: 0;
-	}
-	
-	.futuristic-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		z-index: 0;
-		background: 
-			radial-gradient(ellipse 800px 600px at 20% 30%, rgba(var(--brand-rgb), 0.08) 0%, transparent 50%),
-			radial-gradient(ellipse 600px 800px at 80% 70%, rgba(var(--brand-secondary-rgb), 0.06) 0%, transparent 50%),
-			radial-gradient(ellipse 400px 400px at 50% 50%, rgba(var(--brand-rgb), 0.04) 0%, transparent 70%),
-			linear-gradient(135deg, rgba(var(--background), 1) 0%, rgba(var(--background), 0.98) 100%);
-		
-		// Edge fade overlays for seamless blending
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 15%;
-			background: linear-gradient(to bottom, rgba(var(--background), 1) 0%, rgba(var(--background), 0) 100%);
-			pointer-events: none;
-			z-index: 10;
-		}
-		
-		&::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 15%;
-			background: linear-gradient(to top, rgba(var(--background), 1) 0%, rgba(var(--background), 0) 100%);
-			pointer-events: none;
-			z-index: 10;
-		}
-	}
-	
-	// Subtle noise texture - modern AI site aesthetic
-	.noise-texture {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0.03;
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-		pointer-events: none;
-		z-index: 1;
-	}
-	
-	// Refined gradient mesh - sophisticated color blending
-	.gradient-mesh {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: 
-			radial-gradient(circle at 25% 25%, rgba(var(--brand-rgb), 0.15) 0%, transparent 50%),
-			radial-gradient(circle at 75% 75%, rgba(var(--brand-secondary-rgb), 0.12) 0%, transparent 50%);
-		opacity: 0.6;
-		mix-blend-mode: overlay;
-		pointer-events: none;
-		z-index: 1;
-		animation: gradientMeshShift 20s ease-in-out infinite;
-	}
-	
-	// Animated mesh grid - more refined and subtle
-	.mesh-grid {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: 
-			linear-gradient(rgba(var(--brand-rgb), 0.015) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(var(--brand-rgb), 0.015) 1px, transparent 1px);
-		background-size: 120px 120px;
-		opacity: 0.3;
-		animation: meshMove 30s linear infinite;
-		will-change: transform;
-		mask-image: radial-gradient(ellipse 100% 100% at center, black 40%, transparent 100%);
-		-webkit-mask-image: radial-gradient(ellipse 100% 100% at center, black 40%, transparent 100%);
-		z-index: 1;
-	}
-	
-	// Refined gradient orbs - softer, more sophisticated
-	.gradient-orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(80px);
-		opacity: 0.5;
-		pointer-events: none;
-		will-change: transform;
-		mix-blend-mode: normal;
-		
-		&.orb-1 {
-			width: 600px;
-			height: 600px;
-			background: radial-gradient(circle, rgba(var(--brand-rgb), 0.25) 0%, rgba(var(--brand-rgb), 0.08) 40%, transparent 70%);
-			top: -250px;
-			left: -150px;
-			animation: morphOrb1 30s ease-in-out infinite;
-		}
-		
-		&.orb-2 {
-			width: 500px;
-			height: 500px;
-			background: radial-gradient(circle, rgba(var(--brand-secondary-rgb), 0.2) 0%, rgba(var(--brand-secondary-rgb), 0.06) 40%, transparent 70%);
-			bottom: -200px;
-			right: -100px;
-			animation: morphOrb2 35s ease-in-out infinite;
-		}
-		
-		&.orb-3 {
-			width: 450px;
-			height: 450px;
-			background: radial-gradient(circle, rgba(var(--brand-rgb), 0.18) 0%, rgba(var(--brand-rgb), 0.05) 40%, transparent 70%);
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			animation: morphOrb3 40s ease-in-out infinite;
-		}
-	}
-	
-	// Light rays - modern AI site aesthetic
-	.light-ray {
-		position: absolute;
-		pointer-events: none;
-		opacity: 0.15;
-		will-change: transform, opacity;
-		
-		&.ray-1 {
-			width: 1px;
-			height: 100%;
-			background: linear-gradient(to bottom, 
-				transparent 0%,
-				rgba(var(--brand-rgb), 0.3) 20%,
-				rgba(var(--brand-rgb), 0.5) 50%,
-				rgba(var(--brand-rgb), 0.3) 80%,
-				transparent 100%);
-			left: 30%;
-			top: 0;
-			transform: rotate(15deg);
-			animation: rayShift1 25s ease-in-out infinite;
-			filter: blur(1px);
-		}
-		
-		&.ray-2 {
-			width: 1px;
-			height: 100%;
-			background: linear-gradient(to bottom, 
-				transparent 0%,
-				rgba(var(--brand-secondary-rgb), 0.2) 30%,
-				rgba(var(--brand-secondary-rgb), 0.4) 60%,
-				rgba(var(--brand-secondary-rgb), 0.2) 90%,
-				transparent 100%);
-			right: 25%;
-			top: 0;
-			transform: rotate(-12deg);
-			animation: rayShift2 30s ease-in-out infinite;
-			filter: blur(1px);
-		}
-	}
-	
-	// Glassmorphic overlay - premium depth effect
-	.glass-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: 
-			linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-			linear-gradient(225deg, rgba(var(--brand-rgb), 0.03) 0%, transparent 50%);
-		backdrop-filter: blur(0.5px);
-		-webkit-backdrop-filter: blur(0.5px);
-		opacity: 0.6;
-		pointer-events: none;
-		z-index: 2;
-	}
-	
-	// Minimal particle field - more refined
-	.particle-field {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: 1;
-	}
-	
-	.particle {
-		position: absolute;
-		width: 3px;
-		height: 3px;
-		background: var(--brand);
-		border-radius: 50%;
-		opacity: 0.4;
-		box-shadow: 0 0 8px rgba(var(--brand-rgb), 0.6);
-		will-change: transform, opacity;
-		filter: blur(0.5px);
-		
-		&:nth-child(1) {
-			top: 25%;
-			left: 15%;
-			animation: particleFloat1 20s ease-in-out infinite;
-		}
-		
-		&:nth-child(2) {
-			top: 65%;
-			left: 75%;
-			animation: particleFloat2 24s ease-in-out infinite;
-			animation-delay: -3s;
-		}
-		
-		&:nth-child(3) {
-			top: 45%;
-			left: 35%;
-			animation: particleFloat3 22s ease-in-out infinite;
-			animation-delay: -6s;
-		}
-		
-		&:nth-child(4) {
-			top: 15%;
-			left: 65%;
-			animation: particleFloat1 26s ease-in-out infinite;
-			animation-delay: -9s;
-		}
-		
-		&:nth-child(5) {
-			top: 75%;
-			left: 25%;
-			animation: particleFloat2 28s ease-in-out infinite;
-			animation-delay: -12s;
-		}
-	}
+	// Background comes from the .skyline-scene layer inside the section
+	background: transparent;
+	isolation: isolate; // own stacking context so the scene can sit beneath all hero content
 	
 	.hero-container {
 		max-width: 75rem;
@@ -752,8 +491,8 @@ nav ul li a {
 	
 	.hero-title {
 		font-size: clamp(2.5rem, 8vw, 5.5rem);
-		font-weight: 700;
-		line-height: 1.2;
+		font-weight: 400;
+		line-height: 1.1;
 		margin: 0 0 1.5rem 0;
 		background: linear-gradient(
 			135deg,
@@ -774,6 +513,7 @@ nav ul li a {
 	}
 	
 	.hero-tagline {
+		font-family: $font-display;
 		font-size: clamp(1.5rem, 4vw, 2.5rem);
 		font-weight: 400;
 		margin: 0 0 1rem 0;
@@ -781,7 +521,11 @@ nav ul li a {
 	}
 	
 	.hero-description {
-		font-size: clamp(1rem, 2vw, 1.25rem);
+		font-family: $font-mono;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: clamp(0.8125rem, 1.4vw, 1rem);
 		margin: 0 0 2.5rem 0;
 		line-height: 1.6;
 	}
@@ -810,8 +554,11 @@ nav ul li a {
 		.btn {
 			display: inline-block;
 			padding: 1rem 2.5rem;
-			font-size: 1rem;
+			font-family: $font-mono;
+			font-size: 0.875rem;
 			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
 			text-decoration: none;
 			border-radius: $radius-full;
 			transition: all 0.3s ease;
@@ -906,6 +653,78 @@ nav ul li a {
 	}
 }
 
+
+// Home-only 3D Seattle skyline scene (rendered by /js/skyline-3d.js).
+// Fills the hero section edge to edge; the canvas sticks to the viewport while the hero scrolls.
+body.is-home {
+	overflow-x: clip;
+}
+
+.skyline-scene {
+	position: absolute;
+	top: -8rem; // reach up behind the sticky nav
+	bottom: 0;
+	left: 50%;
+	width: 100vw;
+	margin-left: -50vw;
+	z-index: -1; // below every child of the hero, positioned or not
+	pointer-events: none;
+	overflow: clip; // clip, not hidden, so the sticky canvas still sticks
+	background: linear-gradient(to bottom, #e9eef5 0%, rgba(var(--background), 1) 70%);
+	mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 12rem), transparent 100%);
+	-webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 12rem), transparent 100%);
+	
+	canvas {
+		position: sticky;
+		top: 0;
+		width: 100%;
+		height: 100vh;
+		max-width: none;
+		display: block;
+		filter: brightness(0.7); // scene runs 30% darker than rendered
+		opacity: 0;
+		transition: opacity 1.2s ease;
+		
+		&.is-ready {
+			opacity: 1;
+		}
+	}
+	
+	// Shown until WebGL is ready, and kept if it never is
+	.aurora-fallback {
+		position: absolute;
+		top: -20vh;
+		left: -10%;
+		right: -10%;
+		height: 90vh;
+		background:
+			radial-gradient(ellipse 40% 30% at 30% 40%, rgba(var(--brand-secondary-rgb), 0.22) 0%, transparent 70%),
+			radial-gradient(ellipse 45% 25% at 65% 30%, rgba(var(--brand-rgb), 0.2) 0%, transparent 70%),
+			radial-gradient(ellipse 30% 25% at 50% 20%, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+		filter: blur(30px) brightness(0.7);
+		animation: auroraDrift 24s ease-in-out infinite alternate;
+	}
+	
+	canvas.is-ready ~ .aurora-fallback {
+		display: none;
+	}
+}
+
+@keyframes auroraDrift {
+	from {
+		transform: translateX(-3%) skewX(-4deg);
+	}
+	to {
+		transform: translateX(3%) skewX(4deg);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.skyline-scene {
+		background: linear-gradient(to bottom, #04060c 0%, #070a12 55%, #0d111c 100%);
+	}
+}
+
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
@@ -968,170 +787,6 @@ nav ul li a {
 	}
 	50% {
 		background-position: 100% 50%;
-	}
-}
-
-// Futuristic background animations
-@keyframes meshMove {
-	0% {
-		transform: translate(0, 0);
-	}
-	100% {
-		transform: translate(120px, 120px);
-	}
-}
-
-@keyframes gradientMeshShift {
-	0%, 100% {
-		opacity: 0.6;
-		transform: scale(1);
-	}
-	50% {
-		opacity: 0.8;
-		transform: scale(1.05);
-	}
-}
-
-@keyframes rayShift1 {
-	0%, 100% {
-		opacity: 0.15;
-		transform: rotate(15deg) translateX(0);
-	}
-	50% {
-		opacity: 0.25;
-		transform: rotate(18deg) translateX(20px);
-	}
-}
-
-@keyframes rayShift2 {
-	0%, 100% {
-		opacity: 0.15;
-		transform: rotate(-12deg) translateX(0);
-	}
-	50% {
-		opacity: 0.22;
-		transform: rotate(-15deg) translateX(-15px);
-	}
-}
-
-@keyframes morphOrb1 {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-		border-radius: 50% 40% 60% 30%;
-		opacity: 0.5;
-	}
-	25% {
-		transform: translate(80px, -40px) scale(1.08);
-		border-radius: 60% 30% 50% 40%;
-		opacity: 0.6;
-	}
-	50% {
-		transform: translate(-40px, 80px) scale(0.95);
-		border-radius: 40% 60% 30% 50%;
-		opacity: 0.45;
-	}
-	75% {
-		transform: translate(40px, -80px) scale(1.03);
-		border-radius: 30% 50% 40% 60%;
-		opacity: 0.55;
-	}
-}
-
-@keyframes morphOrb2 {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-		border-radius: 50% 60% 40% 30%;
-		opacity: 0.5;
-	}
-	33% {
-		transform: translate(-60px, 60px) scale(1.1);
-		border-radius: 40% 30% 60% 50%;
-		opacity: 0.6;
-	}
-	66% {
-		transform: translate(90px, -50px) scale(0.92);
-		border-radius: 60% 50% 30% 40%;
-		opacity: 0.45;
-	}
-}
-
-@keyframes morphOrb3 {
-	0%, 100% {
-		transform: translate(-50%, -50%) scale(1) rotate(0deg);
-		border-radius: 50%;
-		opacity: 0.5;
-	}
-	25% {
-		transform: translate(-48%, -52%) scale(1.1) rotate(90deg);
-		border-radius: 40% 60% 50% 30%;
-		opacity: 0.6;
-	}
-	50% {
-		transform: translate(-52%, -48%) scale(0.95) rotate(180deg);
-		border-radius: 60% 30% 40% 50%;
-		opacity: 0.45;
-	}
-	75% {
-		transform: translate(-49%, -51%) scale(1.05) rotate(270deg);
-		border-radius: 30% 50% 60% 40%;
-		opacity: 0.55;
-	}
-}
-
-@keyframes particleFloat1 {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-		opacity: 0.4;
-	}
-	25% {
-		transform: translate(25px, -35px) scale(1.15);
-		opacity: 0.6;
-	}
-	50% {
-		transform: translate(-15px, 25px) scale(0.85);
-		opacity: 0.3;
-	}
-	75% {
-		transform: translate(35px, 15px) scale(1.05);
-		opacity: 0.5;
-	}
-}
-
-@keyframes particleFloat2 {
-	0%, 100% {
-		transform: translate(0, 0) scale(1);
-		opacity: 0.4;
-	}
-	33% {
-		transform: translate(-30px, 20px) scale(1.2);
-		opacity: 0.6;
-	}
-	66% {
-		transform: translate(20px, -30px) scale(0.8);
-		opacity: 0.25;
-	}
-}
-
-@keyframes particleFloat3 {
-	0%, 100% {
-		transform: translate(0, 0) scale(1) rotate(0deg);
-		opacity: 0.4;
-	}
-	20% {
-		transform: translate(18px, -25px) scale(1.1) rotate(90deg);
-		opacity: 0.6;
-	}
-	40% {
-		transform: translate(-25px, 18px) scale(0.9) rotate(180deg);
-		opacity: 0.3;
-	}
-	60% {
-		transform: translate(25px, 25px) scale(1.15) rotate(270deg);
-		opacity: 0.55;
-	}
-	80% {
-		transform: translate(-18px, -18px) scale(0.85) rotate(360deg);
-		opacity: 0.4;
 	}
 }
 
@@ -1201,7 +856,7 @@ nav ul li a {
 					background: rgba(var(--background), 0.7);
 					border-color: rgba(255, 255, 255, 0.2);
 					transform: translateY(-2px);
-					box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.1);
+					box-shadow: 0 4px 12px 0 rgba(7, 10, 18, 0.1);
 				}
 				
 				&:focus-visible {
@@ -1631,7 +1286,7 @@ nav ul li a {
 			background: rgba(var(--background), 0.6);
 			@include glassmorphic;
 			border: 1px solid rgba(255, 255, 255, 0.1);
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+			box-shadow: 0 8px 32px 0 rgba(7, 10, 18, 0.1);
 			transition: $transition-smooth;
 			overflow: hidden;
 			
@@ -1649,7 +1304,7 @@ nav ul li a {
 			
 			&:hover {
 				transform: translateY(-6px);
-				box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+				box-shadow: 0 12px 40px 0 rgba(7, 10, 18, 0.2);
 				border-color: rgba(255, 255, 255, 0.15);
 			}
 			
@@ -1690,12 +1345,12 @@ nav ul li a {
 			margin-bottom: 2rem;
 			border-radius: $radius-lg;
 			overflow: hidden;
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+			box-shadow: 0 8px 32px 0 rgba(7, 10, 18, 0.15);
 			transition: transform 0.3s ease, box-shadow 0.3s ease; // Multiple properties
 			position: relative;
 			&:hover {
 				transform: translateY(-4px);
-				box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.25);
+				box-shadow: 0 12px 48px 0 rgba(7, 10, 18, 0.25);
 			}
 			
 			img {
@@ -1752,12 +1407,12 @@ nav ul li a {
 				margin: 0;
 				border-radius: $radius-lg;
 				overflow: hidden;
-				box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+				box-shadow: 0 8px 32px 0 rgba(7, 10, 18, 0.15);
 				transition: transform 0.3s ease, box-shadow 0.3s ease; // Multiple properties
 				
 				&:hover {
 					transform: translateY(-4px);
-					box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.25);
+					box-shadow: 0 12px 48px 0 rgba(7, 10, 18, 0.25);
 				}
 				
 				img {
@@ -1882,9 +1537,9 @@ nav ul li a {
 		backdrop-filter: blur(20px) saturate(180%);
 		-webkit-backdrop-filter: blur(20px) saturate(180%);
 		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 24px;
+		border-radius: $radius-2xl;
 		padding: 2.5rem;
-		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+		box-shadow: 0 8px 32px 0 rgba(7, 10, 18, 0.15);
 		
 		@media only screen and (max-width: 768px) {
 			padding: 1.5rem;
@@ -1941,7 +1596,7 @@ nav ul li a {
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
 		border: 1px solid rgba(0, 0, 0, 0.5);
-		border-radius: 12px;
+		border-radius: $radius-md;
 		font-size: 1rem;
 		font-family: inherit;
 		color: var(--text);
@@ -2092,12 +1747,12 @@ nav ul li a {
 		
 		&::-webkit-scrollbar-track {
 			background: rgba(255, 255, 255, 0.05);
-			border-radius: 4px;
+			border-radius: $radius-sm;
 		}
 		
 		&::-webkit-scrollbar-thumb {
 			background: rgba(var(--brand-rgb), 0.3);
-			border-radius: 4px;
+			border-radius: $radius-sm;
 			
 			&:hover {
 				background: rgba(var(--brand-rgb), 0.5);
@@ -2332,67 +1987,20 @@ nav ul li a {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: 17, 17, 17;
-	--border: #000;
-    --text: #f1f1f1;
-    --link: #8ab4f8;
-    --brand: #748fff;
-    --brand-rgb: 74, 108, 247;
-    --brand-secondary: hsl(144.09deg 50.2% 49.61%);
-    --brand-secondary-rgb: 90, 174, 126;
+    --background: 7, 10, 18;
+	--border: #393d4c;
+    --text: #e8eaf0;
+    --link: #7fd8ff;
+    --brand: #00baff;
+    --brand-rgb: 0, 186, 255;
+    --brand-secondary: #3fbe72;
+    --brand-secondary-rgb: 63, 190, 114;
   }
 	.home .name header h1 {
 		text-shadow: none;
 	}  
   
-  // Dark mode adjustments for futuristic background
   .hero-section {
-	.futuristic-bg {
-		background: 
-			radial-gradient(ellipse 800px 600px at 20% 30%, rgba(var(--brand-rgb), 0.12) 0%, transparent 50%),
-			radial-gradient(ellipse 600px 800px at 80% 70%, rgba(var(--brand-secondary-rgb), 0.1) 0%, transparent 50%),
-			radial-gradient(ellipse 400px 400px at 50% 50%, rgba(var(--brand-rgb), 0.08) 0%, transparent 70%),
-			linear-gradient(135deg, rgba(var(--background), 1) 0%, rgba(var(--background), 0.98) 100%);
-		
-		// Edge fade overlays for dark mode
-		&::before {
-			background: linear-gradient(to bottom, rgba(var(--background), 1) 0%, rgba(var(--background), 0) 100%);
-		}
-		
-		&::after {
-			background: linear-gradient(to top, rgba(var(--background), 1) 0%, rgba(var(--background), 0) 100%);
-		}
-	}
-	
-	.noise-texture {
-		opacity: 0.05;
-	}
-	
-	.gradient-mesh {
-		opacity: 0.8;
-	}
-	
-	.mesh-grid {
-		opacity: 0.5;
-	}
-	
-	.gradient-orb {
-		opacity: 0.7;
-	}
-	
-	.light-ray {
-		opacity: 0.2;
-	}
-	
-	.particle {
-		opacity: 0.6;
-		box-shadow: 0 0 12px rgba(var(--brand-rgb), 0.8);
-	}
-	
-	.glass-overlay {
-		opacity: 0.7;
-	}
-	
 	.hero-cta {
 		.btn {
 			&.btn-primary {
@@ -2465,7 +2073,11 @@ nav ul li a {
 	input[type="email"],
 	textarea {
 		background: rgba(0, 0, 0, 0.2);
-		border-color: rgba(0, 0, 0, 0.5);
+		border-color: rgba(255, 255, 255, 0.28);
+		
+		&:hover {
+			border-color: rgba(255, 255, 255, 0.4);
+		}
 		
 		&:focus {
 			background: rgba(0, 0, 0, 0.3);
@@ -2555,7 +2167,7 @@ nav ul li a {
 	
 	.chat-input-container .chat-form .input-wrapper {
 		background: rgba(0, 0, 0, 0.4) ;
-		border-color: rgba(255, 255, 255, 0.15) ;
+		border-color: rgba(255, 255, 255, 0.28) ;
 		
 		&:focus-within {
 			background: rgba(0, 0, 0, 0.5) ;
@@ -2641,28 +2253,8 @@ nav ul li a {
 		animation: none !important;
 	}
 	
-	.futuristic-bg {
-		.gradient-mesh {
-			animation: none !important;
-		}
-		
-		.mesh-grid {
-			animation: none !important;
-		}
-		
-		.gradient-orb {
-			animation: none !important;
-			transform: none !important;
-		}
-		
-		.light-ray {
-			animation: none !important;
-		}
-		
-		.particle {
-			animation: none !important;
-			transform: none !important;
-		}
+	.skyline-scene .aurora-fallback {
+		animation: none !important;
 	}
 	
 	.portfolio-card {

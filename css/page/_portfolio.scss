@@ -334,7 +334,7 @@ $radius-xl: 20px;
 			img {
 				width: 100%;
 				height: auto;
-				border-radius: 12px;
+				border-radius: $radius-md;
 				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 				display: block;
 			}
@@ -356,7 +356,7 @@ $radius-xl: 20px;
 			img {
 				width: 100%;
 				height: auto;
-				border-radius: 12px;
+				border-radius: $radius-md;
 				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 				display: block;
 			}
@@ -578,7 +578,7 @@ $radius-xl: 20px;
 			img {
 				width: 100%;
 				height: auto;
-				border-radius: 12px;
+				border-radius: $radius-md;
 				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 				display: block;
 				border: none;
