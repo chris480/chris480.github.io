@@ -50,6 +50,18 @@
         <link rel="preload" href="/css/tiny/styles.css" as="style">
         <link rel="preload" href="/images/space-needle.svg" as="image" fetchpriority="low">
         
+        <script>
+            try {
+                var savedTheme = localStorage.getItem('site-theme');
+                if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'linotype') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+                if (localStorage.getItem('site-motion') === 'off') {
+                    document.documentElement.setAttribute('data-motion', 'off');
+                }
+            } catch (e) {}
+        </script>
+        
         <style>
              
             body, nav, h1, h2, h3, h4, h5 {
@@ -57,7 +69,7 @@
             }
         </style>
         
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/tiny/styles.css"/>
         
         
@@ -182,6 +194,47 @@
                 <li><a href="/#contact">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/clnguyen/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
+
+						<div class="theme-switcher">
+				<button type="button" class="theme-toggle" aria-expanded="false" aria-controls="theme-panel">
+					<svg class="icon icon-gear" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18.88 9.87 21.43 10.19v3.62l-2.55.32-.51 1.23 1.58 2.02-2.57 2.57-2.02-1.58-1.23.51-.32 2.55h-3.62l-.32-2.55-1.23-.51-2.02 1.58-2.57-2.57 1.58-2.02-.51-1.23-2.55-.32v-3.62l2.55-.32.51-1.23-1.58-2.02 2.57-2.57 2.02 1.58 1.23-.51.32-2.55h3.62l.32 2.55 1.23.51 2.02-1.58 2.57 2.57-1.58 2.02z"/><circle cx="12" cy="12" r="3"/></svg>
+					<span class="sr-only">Display settings</span>
+				</button>
+				<div class="theme-panel" id="theme-panel" role="group" aria-label="Display settings" hidden>
+					<fieldset>
+						<legend>Theme</legend>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="auto" checked>
+							<span class="theme-swatch theme-swatch-auto" aria-hidden="true"></span>
+							<span class="theme-option-text">Default <small>Follows your system</small></span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="light">
+							<span class="theme-swatch theme-swatch-light" aria-hidden="true"></span>
+							<span class="theme-option-text">Light</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="dark">
+							<span class="theme-swatch theme-swatch-dark" aria-hidden="true"></span>
+							<span class="theme-option-text">Dark</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="linotype">
+							<span class="theme-swatch theme-swatch-linotype" aria-hidden="true"></span>
+							<span class="theme-option-text">Linotype <small>Printed poster</small></span>
+						</label>
+					</fieldset>
+					<fieldset>
+						<legend>Motion</legend>
+						<label class="theme-motion">
+							<input type="checkbox" name="site-motion" checked aria-describedby="theme-motion-note">
+							<span>Animate backgrounds</span>
+						</label>
+						<p class="theme-motion-note" id="theme-motion-note" hidden>Paused by your system's reduced-motion setting.</p>
+					</fieldset>
+				</div>
+			</div>
+
     	</div>
     </nav>
 	<header class="portfolio-intro" style="--bg-image: url('/images/bg-cook-together.webp');">
@@ -225,22 +278,22 @@
 				
 				<div class="highlight-cards">
 					<div class="highlight-card">
-						<div class="highlight-icon">🍳</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-pan" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="13.5" r="6.25"/><path d="M16.25 13.5h5M8 4.5c-.75.9.75 1.6 0 2.5M11.5 3.75c-.75.9.75 1.6 0 2.5"/><circle cx="10" cy="13.5" r="2.25"/></svg></div>
 						<h3>Recipe Innovation</h3>
 						<p>Created a two-way interaction system between ingredients and steps, solving the dissociation problem in traditional recipe platforms.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">♿</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-accessibility" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1.25" fill="currentColor"/><path d="M7 9.75 12 11l5-1.25M12 11v3.25M12 14.25 9.75 18.5M12 14.25l2.25 4.25"/></svg></div>
 						<h3>Accessibility First</h3>
 						<p>Implemented enhanced ARIA solutions for two-way binding between ingredients and steps, ensuring assistive technology compatibility.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">📈</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-trending" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 17.5 9.25 11.75l3.75 3.75 7.5-7.5M15.25 8h5.25v5.25"/></svg></div>
 						<h3>SEO Success</h3>
 						<p>Achieved #1 ranking in search results for the term "Cook Together" within 6 months of launch.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">👥</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-users" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.75 20.25c.4-3.6 2.9-5.75 6.25-5.75s5.85 2.15 6.25 5.75M15.5 4.6a3.5 3.5 0 0 1 0 6.8M17.75 14.75c2 .75 3.15 2.6 3.5 5.5"/></svg></div>
 						<h3>Employee Engagement</h3>
 						<p>Increased employee engagement and satisfaction, with employees regularly making meals found on CT.</p>
 					</div>
@@ -294,7 +347,7 @@
 							<dd class="stat-label">Recipes</dd>
 						</div>
 						<div class="stat-item">
-							<dt class="stat-value">↑</dt>
+							<dt class="stat-value stat-icon"><svg class="icon icon-arrow-up" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4.5M5.75 10.75 12 4.5l6.25 6.25"/></svg><span class="sr-only">Increased</span></dt>
 							<dd class="stat-label">Employee Engagement</dd>
 						</div>
 						<div class="stat-item">

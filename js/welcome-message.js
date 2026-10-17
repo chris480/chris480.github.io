@@ -45,7 +45,7 @@
         }
         
         // Display welcome message with name wrapped in span for styling
-        welcomeElement.innerHTML = 'Welcome, <span class="welcome-name">' + sanitizedName + '</span> to something stellar 💫';
+        welcomeElement.innerHTML = 'Welcome, <span class="welcome-name">' + sanitizedName + '</span> to something stellar <svg class="icon icon-sparkle" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 4.5 12.6 9.4 17.5 11l-4.9 1.6L11 17.5l-1.6-4.9L4.5 11l4.9-1.6zM18.5 3v4M16.5 5h4M18 16.5v3M16.5 18h3"/></svg>';
         welcomeElement.style.display = 'block';
     });
 })();

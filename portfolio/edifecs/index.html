@@ -50,6 +50,18 @@
         <link rel="preload" href="/css/tiny/styles.css" as="style">
         <link rel="preload" href="/images/space-needle.svg" as="image" fetchpriority="low">
         
+        <script>
+            try {
+                var savedTheme = localStorage.getItem('site-theme');
+                if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'linotype') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+                if (localStorage.getItem('site-motion') === 'off') {
+                    document.documentElement.setAttribute('data-motion', 'off');
+                }
+            } catch (e) {}
+        </script>
+        
         <style>
              
             body, nav, h1, h2, h3, h4, h5 {
@@ -57,7 +69,7 @@
             }
         </style>
         
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/tiny/styles.css"/>
         
         
@@ -182,6 +194,47 @@
                 <li><a href="/#contact">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/clnguyen/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
+
+						<div class="theme-switcher">
+				<button type="button" class="theme-toggle" aria-expanded="false" aria-controls="theme-panel">
+					<svg class="icon icon-gear" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18.88 9.87 21.43 10.19v3.62l-2.55.32-.51 1.23 1.58 2.02-2.57 2.57-2.02-1.58-1.23.51-.32 2.55h-3.62l-.32-2.55-1.23-.51-2.02 1.58-2.57-2.57 1.58-2.02-.51-1.23-2.55-.32v-3.62l2.55-.32.51-1.23-1.58-2.02 2.57-2.57 2.02 1.58 1.23-.51.32-2.55h3.62l.32 2.55 1.23.51 2.02-1.58 2.57 2.57-1.58 2.02z"/><circle cx="12" cy="12" r="3"/></svg>
+					<span class="sr-only">Display settings</span>
+				</button>
+				<div class="theme-panel" id="theme-panel" role="group" aria-label="Display settings" hidden>
+					<fieldset>
+						<legend>Theme</legend>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="auto" checked>
+							<span class="theme-swatch theme-swatch-auto" aria-hidden="true"></span>
+							<span class="theme-option-text">Default <small>Follows your system</small></span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="light">
+							<span class="theme-swatch theme-swatch-light" aria-hidden="true"></span>
+							<span class="theme-option-text">Light</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="dark">
+							<span class="theme-swatch theme-swatch-dark" aria-hidden="true"></span>
+							<span class="theme-option-text">Dark</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="linotype">
+							<span class="theme-swatch theme-swatch-linotype" aria-hidden="true"></span>
+							<span class="theme-option-text">Linotype <small>Printed poster</small></span>
+						</label>
+					</fieldset>
+					<fieldset>
+						<legend>Motion</legend>
+						<label class="theme-motion">
+							<input type="checkbox" name="site-motion" checked aria-describedby="theme-motion-note">
+							<span>Animate backgrounds</span>
+						</label>
+						<p class="theme-motion-note" id="theme-motion-note" hidden>Paused by your system's reduced-motion setting.</p>
+					</fieldset>
+				</div>
+			</div>
+
     	</div>
     </nav>
 	<header class="portfolio-intro" style="--bg-image: url('/images/bg-edifecs-website.webp');">
@@ -225,22 +278,22 @@
 				
 				<div class="highlight-cards">
 					<div class="highlight-card">
-						<div class="highlight-icon">📱</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-phone" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6.75" y="2.75" width="10.5" height="18.5" rx="2"/><path d="M10.75 18h2.5M9.75 5.5h4.5"/></svg></div>
 						<h3>Responsive Design</h3>
 						<p>Transformed a 2010-era desktop-only site into a fully responsive platform that works seamlessly across all devices.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">⚡</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-bolt" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.5 2.75 5 13.5h6.25L10.5 21.25 19 10.5h-6.25z"/></svg></div>
 						<h3>Performance Optimization</h3>
 						<p>Implemented best practices to achieve consistent 60fps rendering and fast page loads, improving user experience significantly.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">📊</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-chart" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.75 20.25h16.5M6.75 16.5v-4.75M11.25 16.5V7.5M15.75 16.5v-6.75M3.75 3.75v16.5"/><path d="M6.75 8 11.25 4.5l4.5 2.75 4.5-3.5"/></svg></div>
 						<h3>Traffic Growth</h3>
 						<p>Increased site traffic while reducing bounce rates, generating more leads and training sales through improved user journeys.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">🎯</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-target" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.75"/><circle cx="12" cy="12" r="1.25" fill="currentColor"/><path d="M12 12 19 5M16.5 4.5 19 5l.5 2.5"/></svg></div>
 						<h3>Modular Architecture</h3>
 						<p>Created reusable content modules and standardized page layouts, enabling faster content creation and consistent experiences.</p>
 					</div>
@@ -302,11 +355,11 @@
 							<dd class="stat-label">Performance Target</dd>
 						</div>
 						<div class="stat-item">
-							<dt class="stat-value">↓</dt>
+							<dt class="stat-value stat-icon"><svg class="icon icon-arrow-down" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15.5M5.75 13.25 12 19.5l6.25-6.25"/></svg><span class="sr-only">Reduced</span></dt>
 							<dd class="stat-label">Reduced Bounce Rate</dd>
 						</div>
 						<div class="stat-item">
-							<dt class="stat-value">↑</dt>
+							<dt class="stat-value stat-icon"><svg class="icon icon-arrow-up" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4.5M5.75 10.75 12 4.5l6.25 6.25"/></svg><span class="sr-only">Increased</span></dt>
 							<dd class="stat-label">Increased Traffic</dd>
 						</div>
 					</dl>

@@ -50,6 +50,18 @@
         <link rel="preload" href="/css/tiny/styles.css" as="style">
         <link rel="preload" href="/images/space-needle.svg" as="image" fetchpriority="low">
         
+        <script>
+            try {
+                var savedTheme = localStorage.getItem('site-theme');
+                if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'linotype') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+                if (localStorage.getItem('site-motion') === 'off') {
+                    document.documentElement.setAttribute('data-motion', 'off');
+                }
+            } catch (e) {}
+        </script>
+        
         <style>
              
             body, nav, h1, h2, h3, h4, h5 {
@@ -57,7 +69,7 @@
             }
         </style>
         
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/tiny/styles.css"/>
         
         
@@ -186,6 +198,47 @@
                 <li><a href="/#contact">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/clnguyen/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
+
+						<div class="theme-switcher">
+				<button type="button" class="theme-toggle" aria-expanded="false" aria-controls="theme-panel">
+					<svg class="icon icon-gear" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18.88 9.87 21.43 10.19v3.62l-2.55.32-.51 1.23 1.58 2.02-2.57 2.57-2.02-1.58-1.23.51-.32 2.55h-3.62l-.32-2.55-1.23-.51-2.02 1.58-2.57-2.57 1.58-2.02-.51-1.23-2.55-.32v-3.62l2.55-.32.51-1.23-1.58-2.02 2.57-2.57 2.02 1.58 1.23-.51.32-2.55h3.62l.32 2.55 1.23.51 2.02-1.58 2.57 2.57-1.58 2.02z"/><circle cx="12" cy="12" r="3"/></svg>
+					<span class="sr-only">Display settings</span>
+				</button>
+				<div class="theme-panel" id="theme-panel" role="group" aria-label="Display settings" hidden>
+					<fieldset>
+						<legend>Theme</legend>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="auto" checked>
+							<span class="theme-swatch theme-swatch-auto" aria-hidden="true"></span>
+							<span class="theme-option-text">Default <small>Follows your system</small></span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="light">
+							<span class="theme-swatch theme-swatch-light" aria-hidden="true"></span>
+							<span class="theme-option-text">Light</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="dark">
+							<span class="theme-swatch theme-swatch-dark" aria-hidden="true"></span>
+							<span class="theme-option-text">Dark</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="linotype">
+							<span class="theme-swatch theme-swatch-linotype" aria-hidden="true"></span>
+							<span class="theme-option-text">Linotype <small>Printed poster</small></span>
+						</label>
+					</fieldset>
+					<fieldset>
+						<legend>Motion</legend>
+						<label class="theme-motion">
+							<input type="checkbox" name="site-motion" checked aria-describedby="theme-motion-note">
+							<span>Animate backgrounds</span>
+						</label>
+						<p class="theme-motion-note" id="theme-motion-note" hidden>Paused by your system's reduced-motion setting.</p>
+					</fieldset>
+				</div>
+			</div>
+
     	</div>
     </nav>
 	<header class="portfolio-intro" style="--bg-image: url('/images/bg-blue.webp');">
@@ -231,22 +284,22 @@
 				
 				<div class="highlight-cards">
 					<div class="highlight-card">
-						<div class="highlight-icon">📐</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-layout" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.75" y="3.75" width="7" height="7" rx="1"/><rect x="13.25" y="3.75" width="7" height="7" rx="3.5"/><rect x="3.75" y="13.25" width="7" height="7" rx="1"/><path d="M16.75 13.25 20.25 20.25h-7z"/></svg></div>
 						<h3>Design System Overhaul</h3>
 						<p>Revamped core design system in Figma, migrating legacy patterns to modern, accessible standards with comprehensive documentation.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">👥</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-users" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.75 20.25c.4-3.6 2.9-5.75 6.25-5.75s5.85 2.15 6.25 5.75M15.5 4.6a3.5 3.5 0 0 1 0 6.8M17.75 14.75c2 .75 3.15 2.6 3.5 5.5"/></svg></div>
 						<h3>Cross-Functional Collaboration</h3>
 						<p>Partnered with engineering to document reusable React components, reducing development time by 28% across teams.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">⚡</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-bolt" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.5 2.75 5 13.5h6.25L10.5 21.25 19 10.5h-6.25z"/></svg></div>
 						<h3>AI Document Engine</h3>
 						<p>Launched AI-powered document processing system, saving up to $250k per instance through automated workflows.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">🔧</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-wrench" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 3.5a5 5 0 0 0-4.55 7.05L3.6 16.9a1.9 1.9 0 0 0 2.7 2.7l6.35-6.35A5 5 0 0 0 20.2 8.4l-2.95 1.15-2.5-.6-.6-2.5z"/></svg></div>
 						<h3>Figma Plugin Development</h3>
 						<p>Created custom Figma plugins to automate standards enforcement and accelerate development workflows across teams.</p>
 					</div>

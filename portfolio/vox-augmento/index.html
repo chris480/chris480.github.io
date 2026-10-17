@@ -50,6 +50,18 @@
         <link rel="preload" href="/css/tiny/styles.css" as="style">
         <link rel="preload" href="/images/space-needle.svg" as="image" fetchpriority="low">
         
+        <script>
+            try {
+                var savedTheme = localStorage.getItem('site-theme');
+                if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'linotype') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                }
+                if (localStorage.getItem('site-motion') === 'off') {
+                    document.documentElement.setAttribute('data-motion', 'off');
+                }
+            } catch (e) {}
+        </script>
+        
         <style>
              
             body, nav, h1, h2, h3, h4, h5 {
@@ -57,7 +69,7 @@
             }
         </style>
         
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500;600&family=Oxygen:wght@300;400;700&family=Questrial&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/tiny/styles.css"/>
         
         
@@ -182,6 +194,47 @@
                 <li><a href="/#contact">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/clnguyen/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             </ul>
+
+						<div class="theme-switcher">
+				<button type="button" class="theme-toggle" aria-expanded="false" aria-controls="theme-panel">
+					<svg class="icon icon-gear" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18.88 9.87 21.43 10.19v3.62l-2.55.32-.51 1.23 1.58 2.02-2.57 2.57-2.02-1.58-1.23.51-.32 2.55h-3.62l-.32-2.55-1.23-.51-2.02 1.58-2.57-2.57 1.58-2.02-.51-1.23-2.55-.32v-3.62l2.55-.32.51-1.23-1.58-2.02 2.57-2.57 2.02 1.58 1.23-.51.32-2.55h3.62l.32 2.55 1.23.51 2.02-1.58 2.57 2.57-1.58 2.02z"/><circle cx="12" cy="12" r="3"/></svg>
+					<span class="sr-only">Display settings</span>
+				</button>
+				<div class="theme-panel" id="theme-panel" role="group" aria-label="Display settings" hidden>
+					<fieldset>
+						<legend>Theme</legend>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="auto" checked>
+							<span class="theme-swatch theme-swatch-auto" aria-hidden="true"></span>
+							<span class="theme-option-text">Default <small>Follows your system</small></span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="light">
+							<span class="theme-swatch theme-swatch-light" aria-hidden="true"></span>
+							<span class="theme-option-text">Light</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="dark">
+							<span class="theme-swatch theme-swatch-dark" aria-hidden="true"></span>
+							<span class="theme-option-text">Dark</span>
+						</label>
+						<label class="theme-option">
+							<input type="radio" name="site-theme" value="linotype">
+							<span class="theme-swatch theme-swatch-linotype" aria-hidden="true"></span>
+							<span class="theme-option-text">Linotype <small>Printed poster</small></span>
+						</label>
+					</fieldset>
+					<fieldset>
+						<legend>Motion</legend>
+						<label class="theme-motion">
+							<input type="checkbox" name="site-motion" checked aria-describedby="theme-motion-note">
+							<span>Animate backgrounds</span>
+						</label>
+						<p class="theme-motion-note" id="theme-motion-note" hidden>Paused by your system's reduced-motion setting.</p>
+					</fieldset>
+				</div>
+			</div>
+
     	</div>
     </nav>
 	<header class="portfolio-intro" style="--bg-image: url('/images/bg-vr.webp');">
@@ -225,22 +278,22 @@
 				
 				<div class="highlight-cards">
 					<div class="highlight-card">
-						<div class="highlight-icon">🎵</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-music" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 18.25V5.5l11-2.25v12.5M9 9.25l11-2.25"/><circle cx="6.25" cy="18.25" r="2.75"/><circle cx="17.25" cy="15.75" r="2.75"/></svg></div>
 						<h3>VR Music Innovation</h3>
 						<p>Created a unique musical instrument that could not be realized outside VR, enabling natural movement-based musical expression.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">🎨</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-palette" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18c1.15 0 1.75-.75 1.75-1.65 0-1.35-1.25-1.6-1.25-2.85 0-1 .8-1.5 1.75-1.5H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1" fill="currentColor"/><circle cx="9.75" cy="7" r="1" fill="currentColor"/><circle cx="14.5" cy="7" r="1" fill="currentColor"/></svg></div>
 						<h3>3D Sound Painting</h3>
 						<p>Designed an intuitive interface where users paint sounds in 3D space using voice and controller movements, with real-time audio modulation.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">🏆</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-trophy" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.75 3.75h8.5V9a4.25 4.25 0 0 1-8.5 0zM7.75 5.75H4.5c0 2.9 1.4 4.6 3.6 5M16.25 5.75h3.25c0 2.9-1.4 4.6-3.6 5M12 13.25v3.5M8.25 20.25h7.5M9.75 16.75h4.5v3.5h-4.5z"/></svg></div>
 						<h3>Hackathon Winner</h3>
 						<p>Awarded best technical achievement at the 2017 Seattle VR Hackathon for innovative use of Unity and Max/MSP integration.</p>
 					</div>
 					<div class="highlight-card">
-						<div class="highlight-icon">🎯</div>
+						<div class="highlight-icon" aria-hidden="true"><svg class="icon icon-target" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.75"/><circle cx="12" cy="12" r="1.25" fill="currentColor"/><path d="M12 12 19 5M16.5 4.5 19 5l.5 2.5"/></svg></div>
 						<h3>Accessible Design</h3>
 						<p>Built for both novice and experienced musicians, with low barrier to entry but high expressive potential for mastery.</p>
 					</div>
@@ -279,7 +332,7 @@
 					<div class="impact-accent" aria-hidden="true"></div>
 					<dl class="stats-grid">
 						<div class="stat-item">
-							<dt class="stat-value">🏆</dt>
+							<dt class="stat-value stat-icon"><svg class="icon icon-trophy" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.75 3.75h8.5V9a4.25 4.25 0 0 1-8.5 0zM7.75 5.75H4.5c0 2.9 1.4 4.6 3.6 5M16.25 5.75h3.25c0 2.9-1.4 4.6-3.6 5M12 13.25v3.5M8.25 20.25h7.5M9.75 16.75h4.5v3.5h-4.5z"/></svg><span class="sr-only">Award</span></dt>
 							<dd class="stat-label">Best Technical Achievement</dd>
 						</div>
 						<div class="stat-item">

@@ -44,6 +44,26 @@ $shadow-md: 0 14px 36px 0 rgba(7, 10, 18, 0.22);
 	border: 1px solid $border;
 }
 
+// Theme hooks. No data-theme on <html> = follow the OS (the default look);
+// the gear menu (theme-switcher.js) can force light, dark or linotype.
+// Inside the block, `&` is the root itself (use it for token overrides).
+@mixin dark-theme {
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme]) {
+			@content;
+		}
+	}
+	:root[data-theme="dark"] {
+		@content;
+	}
+}
+
+@mixin linotype-theme {
+	:root[data-theme="linotype"] {
+		@content;
+	}
+}
+
 @mixin heading-accent($width, $height, $margin-top) {
 	&::after {
 		content: '';
@@ -211,7 +231,7 @@ nav{
 }
 
 // Dark mode glassmorphism adjustments
-@media (prefers-color-scheme: dark) {
+@include dark-theme {
 	nav {
 		background: rgba(0, 0, 0, 0.2);
 		border: 1px solid rgba(255, 255, 255, 0.1);
@@ -486,7 +506,27 @@ nav ul li a {
 		text-align: center;
 		max-width: 53rem;
 		margin: 0 auto;
+		position: relative;
 		animation: fadeInUp 0.8s ease-out;
+
+		// Soft page-colored scrim so the copy keeps its contrast over the busy skyline
+		&::before {
+			content: '';
+			position: absolute;
+			inset: -3rem -5rem;
+			z-index: -1;
+			pointer-events: none;
+			background: radial-gradient(closest-side, rgba(var(--background), 0.88) 0%, rgba(var(--background), 0.7) 55%, rgba(var(--background), 0) 100%);
+
+			@media only screen and (max-width: 768px) {
+				inset: -2rem -1.5rem;
+			}
+		}
+	}
+
+	// Masthead row, only the Linotype theme shows it
+	.hero-meta {
+		display: none;
 	}
 	
 	.hero-title {
@@ -681,7 +721,6 @@ body.is-home {
 		height: 100vh;
 		max-width: none;
 		display: block;
-		filter: brightness(0.7); // scene runs 30% darker than rendered
 		opacity: 0;
 		transition: opacity 1.2s ease;
 		
@@ -719,9 +758,13 @@ body.is-home {
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+@include dark-theme {
 	.skyline-scene {
 		background: linear-gradient(to bottom, #04060c 0%, #070a12 55%, #0d111c 100%);
+
+		canvas {
+			filter: brightness(0.7); // night scene runs 30% darker than rendered
+		}
 	}
 }
 
@@ -1313,7 +1356,13 @@ body.is-home {
 				margin-bottom: 0.75rem;
 				line-height: 1;
 				display: block;
+				color: var(--brand);
 				transition: transform 0.3s ease;
+
+				.icon {
+					width: 2rem;
+					height: 2rem;
+				}
 			}
 			
 			&:hover .highlight-icon {
@@ -1662,9 +1711,6 @@ body.is-home {
 
 .section-padding {
 	padding: 5em 0;
-	&.process {
-		background-color: rgba(var(--background), 0.95);
-	}
 	@media only screen and (max-width: 40rem) {
 		padding: 1em 0;
 	}			
@@ -1985,8 +2031,8 @@ body.is-home {
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+@include dark-theme {
+  & {
     --background: 7, 10, 18;
 	--border: #393d4c;
     --text: #e8eaf0;
@@ -2036,10 +2082,10 @@ body.is-home {
 	.badge {
 		background: rgba(var(--brand-rgb), 0.2);
 		border: 1px solid rgba(255, 255, 255, 0.1);
-		
-		.portfolio-card:hover & {
-			background: rgba(var(--brand-rgb), 0.3);
-		}
+	}
+
+	.portfolio-card:hover .badge {
+		background: rgba(var(--brand-rgb), 0.3);
 	}
 	
 	.card-container {
@@ -2183,7 +2229,10 @@ body.is-home {
 }
 
 @media (prefers-contrast: more) {
-  :root {
+  // Matches the theme selectors' specificity so high contrast still wins
+  :root,
+  :root:not([data-theme]),
+  :root[data-theme] {
     --background: 0, 0, 0;
 	--border: #000;
     --text: #fff;
@@ -2305,3 +2354,5 @@ body.is-home {
 		transition: none !important;
 	}
 }
+
+@import 'page/themes.scss';
