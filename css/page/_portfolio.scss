@@ -441,7 +441,12 @@ $radius-xl: 20px;
 					display: flex;
 					flex-wrap: wrap;
 					gap: 0.75rem;
-					margin-top: 1.5rem;
+					margin: 1.5rem 0 2rem;
+
+					// Copy that follows the badge row needs room to breathe
+					+ p {
+						margin-top: 0;
+					}
 
 					.tech-badge {
 						display: inline-block;

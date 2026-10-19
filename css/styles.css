@@ -2163,7 +2163,10 @@ body.is-home {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+.portfolio-page .portfolio-body .solution-details .detail-section .tech-badges + p {
+  margin-top: 0;
 }
 .portfolio-page .portfolio-body .solution-details .detail-section .tech-badges .tech-badge {
   display: inline-block;
@@ -3005,6 +3008,145 @@ body.is-home {
     transition: none !important;
   }
 }
+.portfolio-archive .portfolio {
+  padding-bottom: 2rem;
+}
+.portfolio-archive .portfolio .grid-container {
+  max-width: 62rem;
+}
+.portfolio-archive .portfolio .card-container {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media only screen and (max-width: 56rem) {
+  .portfolio-archive .portfolio .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+.portfolio-archive .portfolio .card-container .portfolio-card {
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+}
+.portfolio-archive .portfolio .card-container > .additional-works-link {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+.portfolio-archive .contact.section-padding {
+  padding-top: 2rem;
+}
+
+.portfolio .card-container .portfolio-card header img,
+.portfolio .card-container .portfolio-card header video,
+.portfolio .card-container .portfolio-card header .isometric-figure {
+  margin-bottom: 4.25rem;
+}
+
+.portfolio-card .badge .lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid currentColor;
+  opacity: 0.85;
+}
+.portfolio-card .badge .lock .icon {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+.gate {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem 6rem;
+}
+.gate .gate-card {
+  width: 100%;
+  max-width: 34rem;
+  padding: 2.25rem 2.5rem;
+  background: rgba(var(--background), 0.92);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 14px 36px 0 rgba(7, 10, 18, 0.22);
+  color: var(--text);
+}
+@media only screen and (max-width: 30rem) {
+  .gate .gate-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+.gate h2 {
+  margin-bottom: 1rem;
+}
+.gate label {
+  display: block;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 1.5rem 0 0.4rem;
+}
+.gate .gate-row {
+  display: flex;
+  gap: 0.5rem;
+}
+@media only screen and (max-width: 30rem) {
+  .gate .gate-row {
+    flex-direction: column;
+  }
+}
+.gate input[type=password] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  color: var(--text);
+  background: rgba(var(--background), 1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.gate input[type=password]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+.gate .btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.gate .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.gate .btn-primary:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+.gate .gate-msg {
+  min-height: 1.5em;
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--brand);
+}
+.gate .gate-alt {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.portfolio-article [tabindex="-1"]:focus {
+  outline: none;
+}
+
 .icon {
   display: inline-block;
   width: 1em;
