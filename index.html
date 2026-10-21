@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebSite">
 <head>
-        <meta name="generator" content="Hugo 0.74.1" />
+        <meta name="generator" content="Hugo 0.88.1" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -379,12 +379,100 @@
 							I know what it's like to be in the trenches at a startup, where every decision matters and resources are always tight. That experience taught me to move fast, adapt quickly, and never lose sight of what really matters for users and the business. I love working with both designers and engineers, bridging creative ideas and technical realities, and building a culture where people feel empowered to do their best work.
 						</p>
 					</div>
-					<figure class="sub-image">
-						<a href="/images/rg-home.webp" target="_blank">
-							<img src="/images/rg-home.webp" width="800" height="600" alt="RoundGlass Collective homepage framed into a laptop" loading="lazy" decoding="async">
+					<figure class="sub-image sub-image--duo">
+						<a class="duo" href="/images/help-start.jpg" target="_blank">
+							<div class="duo-device">
+								<div class="duo-slot"></div>
+								<div class="duo-right">
+									<div class="duo-screen">
+										<img src="/images/rg_ds.avif" alt="RoundGlass design system components in Figma" loading="lazy" decoding="async">
+										<img src="/images/roundglass-sitebuilder.jpg" width="543" height="566" alt="Angular code for the RoundGlass site builder component" loading="lazy" decoding="async">
+									</div>
+								</div>
+								
+								<div class="duo-leaf">
+									<div class="duo-face duo-front" aria-hidden="true">
+										<div class="duo-screen">
+											<img src="/images/help-start.webp" width="1442" height="903" alt="" loading="lazy" decoding="async">
+											<img class="duo-blur" src="/images/help-start.webp" alt="" loading="lazy" decoding="async">
+										</div>
+										<div class="duo-shade"></div>
+									</div>
+									<div class="duo-face duo-back">
+										<div class="duo-screen">
+											<img src="/images/help-start.webp" width="1442" height="903" alt="Work order template screen from an aerospace manufacturing app" loading="lazy" decoding="async">
+											<img class="duo-blur" src="/images/help-start.webp" alt="" loading="lazy" decoding="async">
+										</div>
+										<div class="duo-shade"></div>
+									</div>
+								</div>
+							</div>
 						</a>
-						<figcaption>RoundGlass Collective homepage framed into a laptop</figcaption>
+						<figcaption>Manufacturing, design system, and site builder work on a dual-screen device</figcaption>
 					</figure>
+					<script>
+						
+						
+						(function () {
+							var duo = document.currentScript.previousElementSibling.querySelector('.duo');
+							if (!duo || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+							var device = duo.querySelector('.duo-device');
+							var leaf = duo.querySelector('.duo-leaf');
+							var front = duo.querySelector('.duo-front');
+							var back = duo.querySelector('.duo-back');
+							var DURATION = 1800;
+							var progress = 0, target = 0, raf = 0;
+
+							function smoothstep(t) {
+								t = Math.min(1, Math.max(0, t));
+								return t * t * (3 - 2 * t);
+							}
+
+							
+							function tilt(face, amount) {
+								face.style.setProperty('--tilt', amount.toFixed(3));
+							}
+
+							function render() {
+								var s = smoothstep(progress);
+								var angle = 180 * s;
+								device.style.transform = 'translateX(' + (-25 * (1 - s)).toFixed(3) + '%)';
+								leaf.style.transform = 'rotateY(' + (-angle).toFixed(2) + 'deg)';
+								tilt(front, Math.min(1, angle / 90));
+								tilt(back, Math.min(1, (180 - angle) / 90));
+							}
+
+							function animateTo(to) {
+								if (to === target) return;
+								target = to;
+								cancelAnimationFrame(raf);
+								var from = progress, start = 0;
+								var duration = DURATION * Math.abs(to - from);
+								raf = requestAnimationFrame(function step(now) {
+									if (!start) start = now;
+									var t = duration ? Math.min(1, Math.max(0, (now - start) / duration)) : 1;
+									
+									progress = from + (to - from) * (1 - Math.pow(1 - t, 3));
+									render();
+									if (t < 1) raf = requestAnimationFrame(step);
+								});
+							}
+
+							render();
+							new IntersectionObserver(function (entries) {
+								entries.forEach(function (e) {
+									if (e.intersectionRatio >= 0.6) {
+										animateTo(1);
+									} else if (!e.isIntersecting) {
+										cancelAnimationFrame(raf);
+										progress = target = 0;
+										render();
+									}
+								});
+							}, { threshold: [0, 0.6] }).observe(duo);
+						})();
+					</script>
 				</div>
 			</section>
 			<section class="sub">

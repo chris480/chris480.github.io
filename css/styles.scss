@@ -1487,7 +1487,162 @@ body.is-home {
 					order: 1;
 				}
 			}
+
+			// Dual-screen device. The leaf lies folded over the right screen, showing help-start,
+			// and turns 180° on the hinge to become the left screen. The script in
+			// home-process.html drives the turn on scroll; this default is the open state.
+			.sub-image--duo {
+				overflow: visible;
+				box-shadow: none;
+				
+				&:hover {
+					transform: none;
+					box-shadow: none;
+				}
+				
+				&:hover img {
+					transform: none;
+				}
+				
+				$duo-bezel: 6px;
+				$duo-hinge: 1.5px;
+				
+				.duo {
+					display: block;
+					padding: 1.5rem 0 1rem;
+					perspective: 1100px;
+					
+					&:focus-visible {
+						outline: 2px solid var(--brand);
+						outline-offset: 4px;
+						border-radius: $radius-lg;
+					}
+				}
+				
+				.duo-device {
+					position: relative;
+					display: flex;
+					width: 100%;
+					transform-style: preserve-3d;
+					will-change: transform;
+				}
+				
+				.duo-slot,
+				.duo-right {
+					flex: 1 1 50%;
+					aspect-ratio: 1;
+				}
+				
+				// Shared bezel for the still screen and both leaf faces
+				.duo-right,
+				.duo-face {
+					padding: $duo-bezel;
+					background: linear-gradient(145deg, #2a2d34, #0d0e11);
+					border-radius: 4px 18px 18px 4px;
+					box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22),
+								0 3px 8px rgba(0, 0, 0, 0.12),
+								inset 0 1px 0 rgba(255, 255, 255, 0.12);
+				}
+				
+				.duo-right {
+					margin-left: $duo-hinge;
+				}
+				
+				.duo-screen {
+					position: relative;
+					height: 100%;
+					overflow: hidden;
+					border-radius: 2px 12px 12px 2px;
+					background: #0d0e11;
+					
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						object-position: left top;
+						border-radius: 0;
+						transition: none;
+					}
+				}
+				
+				.duo-right .duo-screen {
+					display: flex;
+					flex-direction: column;
+					gap: 4px;
+					
+					img {
+						flex: 1 1 0;
+						min-height: 0;
+						height: auto;
+						border-radius: 2px;
+					}
+				}
+				
+				.duo-leaf {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 50%;
+					width: 50%;
+					transform-origin: left center;
+					transform-style: preserve-3d;
+					transform: rotateY(-180deg);
+					will-change: transform;
+				}
+				
+				.duo-face {
+					--tilt: 0;
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: $duo-hinge;
+					right: 0;
+					backface-visibility: hidden;
+					
+					// Fixed-radius blur copy, revealed toward the outer edge as the face turns
+					.duo-blur {
+						position: absolute;
+						inset: 0;
+						filter: blur(6px);
+						opacity: var(--tilt);
+						-webkit-mask-image: linear-gradient(to right, transparent 15%, black 90%);
+						mask-image: linear-gradient(to right, transparent 15%, black 90%);
+					}
+				}
+				
+				// Unshaded near the hinge, falling off to black at the outer edge
+				.duo-shade {
+					position: absolute;
+					inset: 0;
+					border-radius: inherit;
+					pointer-events: none;
+					opacity: var(--tilt);
+					background: linear-gradient(to right,
+						rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.12) 30%, rgba(0, 0, 0, 0.31) 40%,
+						rgba(0, 0, 0, 0.53) 50%, rgba(0, 0, 0, 0.78) 60%, #000 66%);
+				}
+				
+				// The back sits flipped on the leaf; its outer edge is on its own left
+				.duo-back {
+					transform: rotateY(180deg);
+					border-radius: 18px 4px 4px 18px;
+
+					.duo-screen {
+						border-radius: 12px 2px 2px 12px;
+					}
+
+					.duo-blur {
+						-webkit-mask-image: linear-gradient(to left, transparent 15%, black 90%);
+						mask-image: linear-gradient(to left, transparent 15%, black 90%);
+					}
+					
+					.duo-shade {
+						transform: scaleX(-1);
+					}
+				}
+			}
 			
+
 			h2 {
 				font-size: clamp(1.75rem, 4vw, 2.3rem);
 				margin-bottom: 1.5rem;

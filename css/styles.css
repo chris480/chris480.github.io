@@ -1591,6 +1591,125 @@ body.is-home {
     order: 1;
   }
 }
+.process .process-copy section.sub .sub-image--duo {
+  overflow: visible;
+  box-shadow: none;
+}
+.process .process-copy section.sub .sub-image--duo:hover {
+  transform: none;
+  box-shadow: none;
+}
+.process .process-copy section.sub .sub-image--duo:hover img {
+  transform: none;
+}
+.process .process-copy section.sub .sub-image--duo .duo {
+  display: block;
+  padding: 1.5rem 0 1rem;
+  perspective: 1100px;
+}
+.process .process-copy section.sub .sub-image--duo .duo:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-device {
+  position: relative;
+  display: flex;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.process .process-copy section.sub .sub-image--duo .duo-slot,
+.process .process-copy section.sub .sub-image--duo .duo-right {
+  flex: 1 1 50%;
+  aspect-ratio: 1;
+}
+.process .process-copy section.sub .sub-image--duo .duo-right,
+.process .process-copy section.sub .sub-image--duo .duo-face {
+  padding: 6px;
+  background: linear-gradient(145deg, #2a2d34, #0d0e11);
+  border-radius: 4px 18px 18px 4px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22), 0 3px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.process .process-copy section.sub .sub-image--duo .duo-right {
+  margin-left: 1.5px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px 12px 12px 2px;
+  background: #0d0e11;
+}
+.process .process-copy section.sub .sub-image--duo .duo-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 0;
+  transition: none;
+}
+.process .process-copy section.sub .sub-image--duo .duo-right .duo-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-right .duo-screen img {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+  border-radius: 2px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transform: rotateY(-180deg);
+  will-change: transform;
+}
+.process .process-copy section.sub .sub-image--duo .duo-face {
+  --tilt: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.5px;
+  right: 0;
+  backface-visibility: hidden;
+}
+.process .process-copy section.sub .sub-image--duo .duo-face .duo-blur {
+  position: absolute;
+  inset: 0;
+  filter: blur(6px);
+  opacity: var(--tilt);
+  -webkit-mask-image: linear-gradient(to right, transparent 15%, black 90%);
+  mask-image: linear-gradient(to right, transparent 15%, black 90%);
+}
+.process .process-copy section.sub .sub-image--duo .duo-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--tilt);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.12) 30%, rgba(0, 0, 0, 0.31) 40%, rgba(0, 0, 0, 0.53) 50%, rgba(0, 0, 0, 0.78) 60%, #000 66%);
+}
+.process .process-copy section.sub .sub-image--duo .duo-back {
+  transform: rotateY(180deg);
+  border-radius: 18px 4px 4px 18px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-back .duo-screen {
+  border-radius: 12px 2px 2px 12px;
+}
+.process .process-copy section.sub .sub-image--duo .duo-back .duo-blur {
+  -webkit-mask-image: linear-gradient(to left, transparent 15%, black 90%);
+  mask-image: linear-gradient(to left, transparent 15%, black 90%);
+}
+.process .process-copy section.sub .sub-image--duo .duo-back .duo-shade {
+  transform: scaleX(-1);
+}
 .process .process-copy section.sub h2 {
   font-size: clamp(1.75rem, 4vw, 2.3rem);
   margin-bottom: 1.5rem;
