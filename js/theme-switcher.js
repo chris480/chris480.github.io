@@ -3,8 +3,8 @@
 (function() {
     'use strict';
 
-    var THEMES = ['light', 'dark', 'linotype'];
-    var THEME_COLORS = { light: '#F7F8FA', dark: '#070A12', linotype: '#ECE7DC' };
+    var THEMES = ['light', 'dark', 'linotype', 'mecha', '8bit'];
+    var THEME_COLORS = { light: '#F7F8FA', dark: '#070A12', linotype: '#ECE7DC', mecha: '#060C12', '8bit': '#0D0E24' };
     var root = document.documentElement;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');

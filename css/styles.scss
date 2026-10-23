@@ -45,7 +45,8 @@ $shadow-md: 0 14px 36px 0 rgba(7, 10, 18, 0.22);
 }
 
 // Theme hooks. No data-theme on <html> = follow the OS (the default look);
-// the gear menu (theme-switcher.js) can force light, dark or linotype.
+// the gear menu (theme-switcher.js) can force light, dark, linotype, mecha or 8bit.
+// Mecha and 8bit are night themes, so they start from the dark styles and restyle on top.
 // Inside the block, `&` is the root itself (use it for token overrides).
 @mixin dark-theme {
 	@media (prefers-color-scheme: dark) {
@@ -53,13 +54,27 @@ $shadow-md: 0 14px 36px 0 rgba(7, 10, 18, 0.22);
 			@content;
 		}
 	}
-	:root[data-theme="dark"] {
+	:root[data-theme="dark"],
+	:root[data-theme="mecha"],
+	:root[data-theme="8bit"] {
 		@content;
 	}
 }
 
 @mixin linotype-theme {
 	:root[data-theme="linotype"] {
+		@content;
+	}
+}
+
+@mixin mecha-theme {
+	:root[data-theme="mecha"] {
+		@content;
+	}
+}
+
+@mixin pixel-theme {
+	:root[data-theme="8bit"] {
 		@content;
 	}
 }

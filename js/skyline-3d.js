@@ -58,7 +58,46 @@ const PALETTES = {
 		car: 0xb8322a, hemiSky: 0xeef2f5, hemiGround: 0xa89f8c, hemiIntensity: 1.6,
 		glow: 0.3,
 	},
+	// "Mecha" theme: the city on a cockpit monitor, cyan-teal night with magenta and amber lights
+	mecha: {
+		skyTop: 0x02060a, skyHorizon: 0x0e3a44, haze: 0x0a2229,
+		auroraA: 0x2ee6d6, auroraB: 0x1b8cff, auroraC: 0xff4f8b, auroraStrength: 0.35, auroraMix: 0.0,
+		stars: 0.6,
+		building: 0x123a46, buildingTop: 0x22687a, rim: 0x3fe0d0,
+		winWarm: 0xffb347, winCool: 0x5ce1e6, winStrength: 0.9,
+		water: 0x020a0e,
+		ground: 0x03090d, groundLit: 0x0a2129,
+		treeDark: 0x031012, treeLit: 0x0d3a3a,
+		sphereGlass: 0x2a8fa0, sphereGlow: 0x5ce1e6, sphereFrame: 0x3fe0d0, sphereGlowStrength: 1.2,
+		envSky: 0x0a2a33, envHorizon: 0x2e7f8a, envGround: 0x020608, envSun: 0xcff8ff,
+		key: 0xcff8ff, keyIntensity: 1.4, fill: 0x1d6f78,
+		needle: 0xdfeff2, needleEmissive: 0x0e3a44, deck: 0xff4f8b, deckStrength: 1.1,
+		uplight: 0x5ce1e6, uplightIntensity: 80, underglow: 0x2ee6d6,
+		car: 0xffb347, hemiSky: 0x1d6f78, hemiGround: 0x020608, hemiIntensity: 0.6,
+		glow: 1.1,
+	},
+	// "8-bit" theme: an HD-2D dusk, indigo sky over a sunset horizon with warm lit windows
+	'8bit': {
+		skyTop: 0x1b1446, skyHorizon: 0xf08a4b, haze: 0x6a3f63,
+		auroraA: 0xffb35c, auroraB: 0xff6f91, auroraC: 0x8f6bff, auroraStrength: 0.3, auroraMix: 0.0,
+		stars: 0.7,
+		building: 0x2a2350, buildingTop: 0x5b4a8a, rim: 0xffb35c,
+		winWarm: 0xffd27a, winCool: 0x9fd8ff, winStrength: 0.9,
+		water: 0x1a1236,
+		ground: 0x1d1a2e, groundLit: 0x3d3a5a,
+		treeDark: 0x10241f, treeLit: 0x2f6a4a,
+		sphereGlass: 0x7a8fd8, sphereGlow: 0xffd27a, sphereFrame: 0x3a2f66, sphereGlowStrength: 1.3,
+		envSky: 0x3a2a7a, envHorizon: 0xf08a4b, envGround: 0x140f26, envSun: 0xffe2b0,
+		key: 0xffd8a8, keyIntensity: 1.8, fill: 0x6a4f9a,
+		needle: 0xf4ead8, needleEmissive: 0x3a2a55, deck: 0xffd27a, deckStrength: 1.0,
+		uplight: 0xffcf8a, uplightIntensity: 70, underglow: 0xff8a5c,
+		car: 0xffd27a, hemiSky: 0x8a6fc8, hemiGround: 0x1a1230, hemiIntensity: 0.9,
+		glow: 1.0,
+	},
 };
+
+// Themes that render the scene at a fraction of screen resolution; CSS scales it up with hard pixels
+const PIXEL_SCALE = { '8bit': 0.3 };
 
 const NEEDLE = { height: 184, carLow: 6, carHigh: 143, coreRadius: 3.2 };
 const NEEDLE_FOV = 11; // long lens: near-elevation view with just enough perspective to read as solid
@@ -144,7 +183,8 @@ function init(canvas) {
 		const w = window.innerWidth;
 		const h = window.innerHeight;
 		const aspect = w / h;
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, w < 700 ? 1.5 : 1.75));
+		const pixelScale = PIXEL_SCALE[root.dataset.theme];
+		renderer.setPixelRatio(pixelScale || Math.min(window.devicePixelRatio || 1, w < 700 ? 1.5 : 1.75));
 		renderer.setSize(w, h, false);
 		camera.aspect = aspect;
 		camera.updateProjectionMatrix();
@@ -252,6 +292,7 @@ function init(canvas) {
 	reduceMotion.addEventListener('change', () => { readScroll(); start(); });
 	new MutationObserver(() => {
 		applyPalette();
+		resize(); // the 8-bit theme renders at a lower resolution
 		readScroll();
 		start();
 	}).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-motion'] });
