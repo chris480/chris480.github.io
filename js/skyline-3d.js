@@ -110,10 +110,11 @@ function init(canvas) {
 	pmrem.compileEquirectangularShader();
 	let envTarget = null;
 
-	const shared = { time: { value: 0 }, dim: { value: 0 } };
+	const shared = { time: { value: 0 }, dim: { value: 0 }, fold: { value: 0 } };
 	for (const m of [sky.material, city.material, spheres.material, land.material, trees.material, water.material, ridge.material]) {
 		m.uniforms.uTime = shared.time;
 		m.uniforms.uDim = shared.dim;
+		m.uniforms.uFold = shared.fold;
 	}
 
 	let palette;
@@ -195,12 +196,14 @@ function init(canvas) {
 		const dt = Math.min(clock.getDelta(), 0.1);
 		const animate = !motionOff();
 		if (animate) shared.time.value += dt;
+		// The pop-up fold plays once, the first time the hero is on screen; motion off shows it standing
+		shared.fold.value = animate ? Math.min(shared.fold.value + dt, FOLD_END + 1) : FOLD_END + 1;
 
 		const ease = animate ? 1 - Math.exp(-dt * 4) : 1;
 		carPos += (carTarget - carPos) * ease;
 		shared.dim.value += (dimTarget - shared.dim.value) * ease;
 		needle.update(shared.time.value, carPos, shared.dim.value);
-		city.update(shared.time.value);
+		city.update(shared.time.value, shared.fold.value);
 
 		if (animate) camera.position.x = Math.sin(shared.time.value * 0.05) * 4;
 		camera.lookAt(camera.position.x, EYE_HEIGHT, -1000);
@@ -300,22 +303,92 @@ const FOG_GLSL = `
 	}
 `;
 
+// Pop-up book: every piece starts flat on the page, tipped back on a hinge along its base,
+// and stands up in turn from the foreground trees back to downtown, with a little paper overshoot.
+// uFold is seconds since the scene first showed; FOLD_END must cover the last piece.
+const FOLD_END = 3.5;
+const FOLD_GLSL = `
+	uniform float uFold;
+	float foldAngle(vec3 pivot) {
+		float jitter = fract(sin(dot(pivot.xz, vec2(12.9898, 78.233))) * 43758.5453);
+		float delay = 0.5 + clamp((-pivot.z - 230.0) / 1030.0, 0.0, 1.0) * 1.6 + jitter * 0.45;
+		float p = clamp((uFold - delay) / 0.9, 0.0, 1.0);
+		float q = p - 1.0;
+		float rise = 1.0 + 2.6 * q * q * q + 1.6 * q * q; // ease-out-back
+		return -1.5708 * (1.0 - rise);
+	}
+	vec3 foldX(vec3 v, float a) {
+		float c = cos(a);
+		float s = sin(a);
+		return vec3(v.x, v.y * c - v.z * s, v.y * s + v.z * c);
+	}
+`;
+
+// Painted look for the world geometry (needs NOISE_GLSL): brush strokes, pigment that pools
+// warm and cool, light laid on in a few soft bands, and paper tooth over the top
+const PAINT_GLSL = `
+	float brush(vec2 p) {
+		return 0.6 * vnoise(p) + 0.4 * vnoise(p * 2.7 + 3.1);
+	}
+	// Watercolour wash: big soft blooms that drift warm (ochre) and cool (blue) across a surface
+	vec3 pigment(vec3 col, vec3 p) {
+		float k = fbm(p.xz * 0.012 + p.y * 0.006) - 0.45;
+		float bloom = fbm(p.xz * 0.05 + p.y * 0.04 + 7.3) - 0.5;
+		col *= 1.0 + k * vec3(0.38, 0.06, -0.3);
+		return col * (1.0 + bloom * 0.35);
+	}
+	float bands(float l, float wobble) {
+		l += (wobble - 0.5) * 0.3;
+		return 0.45 * smoothstep(0.28, 0.34, l) + 0.55 * smoothstep(0.62, 0.68, l);
+	}
+	vec3 paper(vec3 col) {
+		vec2 fc = gl_FragCoord.xy;
+		float tooth = hash12(floor(fc * 0.75)) - 0.5;
+		float fibre = vnoise(fc * vec2(0.06, 0.35)) - 0.5;
+		return col * (1.0 + tooth * 0.07 + fibre * 0.05);
+	}
+`;
+
 // Vertex shader shared by the world geometry: world position, normal, view distance,
 // and a per-vertex (or per-instance) tint. Works for plain and instanced meshes.
+// With FOLD defined the piece folds up on its base (aPivot, or the instance origin);
+// vRest/vRestNormal keep the standing pose so painted detail stays stuck to the paper.
 const WORLD_VERTEX_GLSL = `
 	attribute vec3 aTint;
 	varying vec3 vPos;
+	varying vec3 vRest;
 	varying vec3 vNormal;
+	varying vec3 vRestNormal;
 	varying vec3 vTint;
+	varying vec2 vUv;
 	varying float vDist;
+	#ifdef FOLD
+		attribute vec3 aPivot;
+		${FOLD_GLSL}
+	#endif
 	void main() {
 		mat4 m = modelMatrix;
 		#ifdef USE_INSTANCING
 			m = modelMatrix * instanceMatrix;
 		#endif
 		vec4 world = m * vec4(position, 1.0);
+		vec3 nrm = normalize(mat3(m) * normal);
+		vRest = world.xyz;
+		vRestNormal = nrm;
+		#ifdef FOLD
+			#ifdef USE_INSTANCING
+				vec3 pivot = (m * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+			#else
+				vec3 pivot = (modelMatrix * vec4(aPivot, 1.0)).xyz;
+			#endif
+			pivot.y = 0.0;
+			float a = foldAngle(pivot);
+			world.xyz = pivot + foldX(world.xyz - pivot, a);
+			nrm = foldX(nrm, a);
+		#endif
 		vPos = world.xyz;
-		vNormal = normalize(mat3(m) * normal);
+		vNormal = nrm;
+		vUv = uv;
 		vTint = aTint;
 		#ifdef USE_INSTANCING_COLOR
 			vTint *= instanceColor;
@@ -328,26 +401,38 @@ const WORLD_VERTEX_GLSL = `
 
 const color = (hex) => new THREE.Color(hex);
 
-// Merge geometries into one non-indexed buffer with position, normal and aTint.
-// Each entry: { geo, tint: [r,g,b] (default white), matrix (optional) }
+// Merge geometries into one non-indexed buffer with position, normal, aTint, aPivot and uv.
+// Each entry: { geo, tint: [r,g,b] (default white), matrix (optional), uv (keep face UVs for
+// inked edges; otherwise 0.5 so no edge is drawn), pivot ([x, z], optional) }. aPivot is the
+// part's base on the ground, where it hinges when it folds up.
 function mergeTinted(parts) {
 	const positions = [];
 	const normals = [];
 	const tints = [];
+	const pivots = [];
+	const uvs = [];
+	const pivot = new THREE.Vector3();
 	for (const part of parts) {
 		let g = part.geo.index ? part.geo.toNonIndexed() : part.geo;
 		if (part.matrix) {
 			g = g === part.geo ? g.clone() : g;
 			g.applyMatrix4(part.matrix);
+			pivot.setFromMatrixPosition(part.matrix);
+		} else {
+			pivot.set(0, 0, 0);
 		}
+		if (part.pivot) pivot.set(part.pivot[0], 0, part.pivot[1]);
 		if (!g.attributes.normal) g.computeVertexNormals();
 		const pos = g.attributes.position.array;
 		const nor = g.attributes.normal.array;
+		const uv = part.uv && g.attributes.uv ? g.attributes.uv.array : null;
 		const tint = part.tint || [1, 1, 1];
-		for (let i = 0; i < pos.length; i += 3) {
+		for (let i = 0, j = 0; i < pos.length; i += 3, j += 2) {
 			positions.push(pos[i], pos[i + 1], pos[i + 2]);
 			normals.push(nor[i], nor[i + 1], nor[i + 2]);
 			tints.push(tint[0], tint[1], tint[2]);
+			pivots.push(pivot.x, 0, pivot.z);
+			uvs.push(uv ? uv[j] : 0.5, uv ? uv[j + 1] : 0.5);
 		}
 		if (g !== part.geo) g.dispose();
 		part.geo.dispose();
@@ -356,6 +441,8 @@ function mergeTinted(parts) {
 	geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
 	geo.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
 	geo.setAttribute('aTint', new THREE.Float32BufferAttribute(tints, 3));
+	geo.setAttribute('aPivot', new THREE.Float32BufferAttribute(pivots, 3));
+	geo.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
 	return geo;
 }
 
@@ -462,10 +549,11 @@ function createCity() {
 	// Landmarks (heights compressed so the skyline sits low). Tints darken/lighten the base color.
 	const parts = [];
 	const keepClear = []; // {x, z, r} zones the random infill stays out of
-	const box = (x, z, w, d, h, tint, rotY = 0, y = 0) => {
+	// `pivot` ([x, z]) hinges an off-centre add-on with the tower it sits on
+	const box = (x, z, w, d, h, tint, rotY = 0, y = 0, pivot) => {
 		const geo = new THREE.BoxGeometry(w, h, d);
 		geo.translate(0, h / 2, 0);
-		parts.push({ geo, tint, matrix: placed(geo, x, y, z, rotY) });
+		parts.push({ geo, tint, matrix: placed(geo, x, y, z, rotY), uv: true, pivot });
 	};
 	const cyl = (x, z, rTop, rBot, h, segs, tint, sx = 1, sz = 1, y = 0) => {
 		const geo = new THREE.CylinderGeometry(rTop, rBot, h, segs);
@@ -552,7 +640,7 @@ function createCity() {
 	box(75, -935, 44, 44, 165, glass);
 	clear(75, -935, 46);
 	box(165, -960, 40, 40, 152, [1.04, 1.06, 1.1]);
-	box(175, -960, 20, 40, 14, [1.04, 1.06, 1.1], 0, 152);
+	box(175, -960, 20, 40, 14, [1.04, 1.06, 1.1], 0, 152, [165, -960]);
 	clear(165, -960, 44);
 	box(240, -1000, 36, 36, 120, glass);
 	clear(240, -1000, 38);
@@ -574,6 +662,7 @@ function createCity() {
 	}
 
 	const material = new THREE.ShaderMaterial({
+		defines: { FOLD: '' },
 		uniforms: {
 			uBase: { value: color(0) }, uTop: { value: color(0) }, uRim: { value: color(0) },
 			uWarm: { value: color(0) }, uCool: { value: color(0) }, uWin: { value: 1 },
@@ -583,41 +672,62 @@ function createCity() {
 		fragmentShader: `
 			uniform vec3 uBase, uTop, uRim, uWarm, uCool;
 			uniform float uWin, uTime;
-			varying vec3 vPos;
+			varying vec3 vRest;
 			varying vec3 vNormal;
+			varying vec3 vRestNormal;
 			varying vec3 vTint;
+			varying vec2 vUv;
 			varying float vDist;
 			${NOISE_GLSL}
+			${PAINT_GLSL}
 			${FOG_GLSL}
 			void main() {
+				// Light follows the folding paper; everything painted on it uses the standing pose
 				vec3 n = normalize(vNormal);
-				float heightT = clamp(vPos.y / 220.0, 0.0, 1.0);
+				vec3 rn = normalize(vRestNormal);
+				vec3 rp = vRest;
+				float heightT = clamp(rp.y / 220.0, 0.0, 1.0);
 				vec3 col = uBase * vTint * (0.75 + 0.5 * heightT);
+				float stroke;
 
-				if (n.y > 0.5) {
+				if (rn.y > 0.5) {
 					col = uTop * vTint;
+					stroke = brush(vec2(rp.x * 0.3, rp.z * 0.04));
 				} else {
 					// Window columns follow the wall's tangent so they wrap around curved towers
-					float along = dot(vPos.xz, normalize(vec2(-n.z, n.x) + 1e-4));
-					vec2 cell = vec2(along / 3.6, vPos.y / 4.2);
+					float along = dot(rp.xz, normalize(vec2(-rn.z, rn.x) + 1e-4));
+					// Long vertical strokes down each wall
+					stroke = brush(vec2(along * 0.16, rp.y * 0.018));
+					vec2 cell = vec2(along / 3.6, rp.y / 4.2);
 					vec2 id = floor(cell);
 					vec2 f = fract(cell);
-					float pane = step(0.22, f.x) * step(f.x, 0.78) * step(0.3, f.y) * step(f.y, 0.8);
-					vec2 seed = id + floor(vec2(vPos.x + vPos.z * 1.3, vPos.z - vPos.x) / 9.0) * 0.37;
+					// Windows dabbed on with a loose, uneven edge
+					vec2 q = abs(f - 0.5) * vec2(1.0, 1.15);
+					float pane = 1.0 - smoothstep(0.2, 0.3, max(q.x, q.y) + (vnoise(cell * 4.0) - 0.5) * 0.14);
+					vec2 seed = id + floor(vec2(rp.x + rp.z * 1.3, rp.z - rp.x) / 9.0) * 0.37;
 					float r = hash12(seed);
 					float lit = step(0.8, r);
 					// A handful of windows switch on and off very slowly
 					lit *= step(0.12, fract(r * 47.0 + uTime * 0.004 * step(0.96, r)));
 					vec3 wc = mix(uWarm, uCool, step(0.82, hash12(seed * 1.7)));
-					col += pane * lit * wc * (0.25 + 0.5 * hash12(seed * 3.1)) * uWin * smoothstep(3.0, 8.0, vPos.y);
+					col += pane * lit * wc * (0.25 + 0.5 * hash12(seed * 3.1)) * uWin * smoothstep(3.0, 8.0, rp.y);
 					// Faces toward the sky catch a little aurora light near the top
-					col += uRim * 0.07 * smoothstep(60.0, 220.0, vPos.y) * (0.5 + 0.5 * n.z);
-					// Simple directional shading so the massing reads
-					col *= 0.82 + 0.18 * clamp(dot(n, normalize(vec3(-0.6, 0.0, 0.8))), 0.0, 1.0);
+					col += uRim * 0.07 * smoothstep(60.0, 220.0, rp.y) * (0.5 + 0.5 * rn.z);
+					// Directional light in a few brushed bands so the massing reads
+					col *= 0.78 + 0.22 * bands(clamp(dot(n, normalize(vec3(-0.6, 0.0, 0.8))), 0.0, 1.0), stroke);
 				}
+				col *= 0.74 + 0.52 * stroke;
+				col = pigment(col, rp);
+
+				// Ink-and-wash edges: pigment pools along each box face's border, with a ragged width
+				vec2 e = min(vUv, 1.0 - vUv) / max(fwidth(vUv), vec2(1e-4));
+				float wob = vnoise(rp.xz * 0.35 + rp.y * 0.2);
+				float ink = 1.0 - smoothstep(0.8 + 1.4 * wob, 2.0 + 2.0 * wob, min(e.x, e.y));
+				col = mix(col, col * 0.42, ink * 0.85);
+
 				// Ground haze
-				col = mix(col, uHaze, (1.0 - smoothstep(0.0, 70.0, vPos.y)) * 0.35);
-				gl_FragColor = vec4(applyFog(col, vDist), 1.0);
+				col = mix(col, uHaze, (1.0 - smoothstep(0.0, 70.0, rp.y)) * 0.35);
+				gl_FragColor = vec4(paper(applyFog(col, vDist)), 1.0);
 				#include <colorspace_fragment>
 			}
 		`,
@@ -672,10 +782,12 @@ function createCity() {
 			u.uHaze.value.set(p.haze);
 			beacons.forEach((b) => { b.userData.max = 0.9 * p.glow; });
 		},
-		update(t) {
+		update(t, fold) {
+			// Beacons wait for the towers to finish standing up
+			const shown = THREE.MathUtils.smoothstep(fold, FOLD_END - 0.3, FOLD_END + 0.3);
 			beacons.forEach((b) => {
 				const blink = Math.pow(0.5 + 0.5 * Math.sin(t * 1.6 + b.userData.phase), 6);
-				b.material.opacity = (0.15 + 0.85 * blink) * b.userData.max;
+				b.material.opacity = (0.15 + 0.85 * blink) * b.userData.max * shown;
 			});
 		},
 	};
@@ -724,10 +836,15 @@ function createSpheres() {
 			varying vec3 vNormal;
 			varying vec3 vBary;
 			varying float vDist;
+			${FOLD_GLSL}
 			void main() {
 				vec4 world = modelMatrix * vec4(position, 1.0);
+				// All three domes fold up together on the lawn
+				vec3 pivot = vec3(${SPHERES.x.toFixed(1)}, 0.0, ${SPHERES.z.toFixed(1)});
+				float a = foldAngle(pivot);
+				world.xyz = pivot + foldX(world.xyz - pivot, a);
 				vPos = world.xyz;
-				vNormal = normalize(mat3(modelMatrix) * normal);
+				vNormal = foldX(normalize(mat3(modelMatrix) * normal), a);
 				vBary = aBary;
 				vec4 mv = viewMatrix * world;
 				vDist = length(mv.xyz);
@@ -742,6 +859,7 @@ function createSpheres() {
 			varying vec3 vBary;
 			varying float vDist;
 			${NOISE_GLSL}
+			${PAINT_GLSL}
 			${FOG_GLSL}
 			void main() {
 				vec3 n = normalize(vNormal);
@@ -755,7 +873,7 @@ function createSpheres() {
 				float w = fwidth(d) * 1.5;
 				float line = 1.0 - smoothstep(0.0, w, d - 0.02);
 				col = mix(col, uFrame, line * 0.65);
-				gl_FragColor = vec4(applyFog(col, vDist), 1.0);
+				gl_FragColor = vec4(paper(applyFog(col, vDist)), 1.0);
 				#include <colorspace_fragment>
 			}
 		`,
@@ -775,26 +893,40 @@ function createSpheres() {
 	};
 }
 
-// Flat-shaded material for the hill and the trees: two-tone lambert with fog and ground haze
-function terrainMaterial() {
+// Painted material for the hill and the trees: two-tone lambert laid on in brushed bands,
+// with fog and ground haze. `fold` makes the pieces pop up (the trees; the hill is the page).
+function terrainMaterial({ fold = false } = {}) {
 	return new THREE.ShaderMaterial({
+		defines: fold ? { FOLD: '' } : {},
 		uniforms: { uDark: { value: color(0) }, uLit: { value: color(0) }, uHaze: { value: color(0) } },
 		vertexShader: WORLD_VERTEX_GLSL,
 		fragmentShader: `
 			uniform vec3 uDark, uLit;
-			varying vec3 vPos;
+			varying vec3 vRest;
 			varying vec3 vNormal;
 			varying vec3 vTint;
 			varying float vDist;
+			${NOISE_GLSL}
+			${PAINT_GLSL}
 			${FOG_GLSL}
 			void main() {
 				vec3 n = normalize(vNormal);
 				float ndl = clamp(dot(n, normalize(vec3(-0.55, 0.7, 0.45))), 0.0, 1.0);
+				#ifdef FOLD
+					// Foliage laid on in dabs that droop with the branches
+					float stroke = brush(vRest.xz * 0.45 + vRest.y * vec2(0.25, 0.7));
+				#else
+					// Long horizontal strokes across the lawn and hillside
+					float stroke = brush(vec2(vRest.x * 0.015, vRest.z * 0.09 + vRest.y * 0.2));
+				#endif
+				float light = bands(ndl, stroke);
 				// Sky light from above plus a soft fill on back faces, so branch undersides stay dark
 				float sky = 0.5 + 0.5 * n.y;
-				vec3 col = mix(uDark, uLit, 0.1 + 0.6 * ndl + 0.3 * ndl * sky) * vTint;
-				col = mix(col, uHaze, (1.0 - smoothstep(0.0, 30.0, vPos.y)) * 0.12);
-				gl_FragColor = vec4(applyFog(col, vDist), 1.0);
+				vec3 col = mix(uDark, uLit, 0.1 + 0.6 * light + 0.3 * light * sky) * vTint;
+				col *= 0.72 + 0.56 * stroke;
+				col = pigment(col, vRest);
+				col = mix(col, uHaze, (1.0 - smoothstep(0.0, 30.0, vRest.y)) * 0.12);
+				gl_FragColor = vec4(paper(applyFog(col, vDist)), 1.0);
 				#include <colorspace_fragment>
 			}
 		`,
@@ -908,7 +1040,7 @@ function createTrees() {
 		tryPlace(x, z, scale);
 	}
 
-	const material = terrainMaterial();
+	const material = terrainMaterial({ fold: true });
 	const mesh = new THREE.InstancedMesh(geo, material, spots.length);
 	const m = new THREE.Matrix4();
 	const q = new THREE.Quaternion();
