@@ -1,0 +1,165 @@
+// /portfolio/ listing page and password-gated case studies.
+
+// The listing shows four cards: lay them out 2×2 instead of 3 + an orphan.
+.portfolio-archive {
+	.portfolio {
+		padding-bottom: 2rem;
+
+		.grid-container {
+			max-width: 62rem;
+		}
+
+		.card-container {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+
+			@media only screen and (max-width: 56rem) {
+				grid-template-columns: 1fr;
+			}
+
+			// Cards carry a fixed 25% width for the home grid; let them fill their column here
+			.portfolio-card {
+				width: auto;
+				min-width: 0;
+				max-width: none;
+				margin: 0;
+			}
+
+			> .additional-works-link {
+				grid-column: 1 / -1;
+				justify-self: center;
+			}
+		}
+	}
+
+	// Two stacked section paddings left a ~10em void above Contact
+	.contact.section-padding {
+		padding-top: 2rem;
+	}
+}
+
+// Tighter gap between a card's preview and its tag (the tag is absolutely positioned at the bottom)
+.portfolio .card-container .portfolio-card header {
+	img,
+	video,
+	.isometric-figure {
+		margin-bottom: 4.25rem;
+	}
+}
+
+// Lock marker on cards that open a gated page
+.portfolio-card .badge .lock {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	margin-left: 0.4rem;
+	padding-left: 0.5rem;
+	border-left: 1px solid currentColor;
+	opacity: 0.85;
+
+	.icon {
+		width: 0.85em;
+		height: 0.85em;
+	}
+}
+
+// Password form shown in place of an encrypted case study
+.gate {
+	display: flex;
+	justify-content: center;
+	padding: 4rem 1rem 6rem;
+
+	.gate-card {
+		width: 100%;
+		max-width: 34rem;
+		padding: 2.25rem 2.5rem;
+		background: rgba(var(--background), 0.92);
+		border: 1px solid var(--border);
+		border-radius: $radius-lg;
+		box-shadow: $shadow-md;
+		color: var(--text);
+
+		@media only screen and (max-width: 30rem) {
+			padding: 1.5rem 1.25rem;
+		}
+	}
+
+	h2 {
+		margin-bottom: 1rem;
+	}
+
+	label {
+		display: block;
+		font-family: $font-mono;
+		font-size: 0.75rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin: 1.5rem 0 0.4rem;
+	}
+
+	.gate-row {
+		display: flex;
+		gap: 0.5rem;
+
+		@media only screen and (max-width: 30rem) {
+			flex-direction: column;
+		}
+	}
+
+	input[type="password"] {
+		flex: 1;
+		min-width: 0;
+		padding: 0.75rem 0.9rem;
+		font: inherit;
+		color: var(--text);
+		background: rgba(var(--background), 1);
+		border: 1px solid var(--border);
+		border-radius: $radius-md;
+
+		&:focus-visible {
+			outline: 2px solid var(--brand);
+			outline-offset: 1px;
+		}
+	}
+
+	.btn-primary {
+		padding: 0.75rem 1.5rem;
+		font-family: $font-mono;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #fff;
+		background: var(--brand);
+		border: 0;
+		border-radius: $radius-md;
+		cursor: pointer;
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: progress;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--text);
+			outline-offset: 2px;
+		}
+	}
+
+	.gate-msg {
+		min-height: 1.5em;
+		margin: 0.6rem 0 0;
+		font-size: 0.9rem;
+		color: var(--brand);
+	}
+
+	.gate-alt {
+		margin: 1rem 0 0;
+		font-size: 0.9rem;
+		opacity: 0.85;
+	}
+}
+
+// Heading receives programmatic focus after unlock (for screen readers); no visible ring needed
+.portfolio-article [tabindex="-1"]:focus {
+	outline: none;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 410.3 434" xmlns="http://www.w3.org/2000/svg">
+<style>.pro0{fill:none;stroke:#ED5124;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro1{fill:#ED5124;} .pro2{font-family:'Arial';} .pro3{font-size:26px;} .pro4{fill:none;stroke:#38D122;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro5{fill:#38D122;} .pro6{fill:none;stroke:#616585;stroke-width:2;stroke-miterlimit:10;} .pro7{fill:#616585;} .pro8{fill:none;stroke:#186DEA;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro9{fill:#186DEA;} .pro10{fill:none;stroke:#CE1329;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro11{fill:#CE1329;} .pro12{fill:none;stroke:#EAD226;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro13{fill:#EAD226;} .pro14{fill:none;stroke:#9D28CE;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;} .pro15{fill:#9D28CE;}
+g{display:none}
+#useful:target{display:block}
+#desireable:target{display:block}
+#usable:target{display:block}
+#valuable:target{display:block}
+#finable:target{display:block}
+#credible:target{display:block}
+#accessible:target{display:block}
+</style>
+<g id="useful">
+	<path class="pro0" d="m168.2 138.8l-38.8-67.2 38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
+	<text class="pro1 pro2 pro3" transform="translate(157.34 75.116)">research</text>
+</g>
+<g id="desireable">
+	<path class="pro4" d="m292 211l-39-67.2 39-67.2h77.5l38.8 67.2-38.8 67.2z"/>
+	<text class="pro5 pro2 pro3" transform="translate(288.71 147.32)">journey</text>
+</g>
+
+<g id="usable">
+	<path class="pro6" d="M44.2 211L5.4 143.8l38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
+	<text class="pro7 pro2 pro3" transform="translate(44.692 147.32)">empthy</text>
+</g>
+<g id="finable">
+	<path class="pro10" d="M44.2 356.4L5.4 289.2 44.2 222h77.6l38.8 67.2-38.8 67.2z"/>
+	<text class="pro11 pro2 pro3" transform="translate(45.462 292.72)">design</text>
+</g>
+
+<g id="credible">
+	<path class="pro12" d="m168.2 427.6l-38.8-67.2 38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
+	<text class="pro13 pro2 pro3" transform="translate(183.5 363.93)">test</text>
+</g>
+<g id="accessible">
+	<path class="pro14" d="m292 355.4l-39-67.2 39-67.2h77.5l38.8 67.2-38.8 67.2z"/>
+	<text class="pro15 pro2 pro3" transform="translate(310 291.72)">dev</text>
+</g>
+<g id="valuable">
+	<path class="pro8" d="M168.2 283.2L129.4 216l38.8-67.2h77.6l38.8 67.2-38.8 67.2z"/>
+	<text class="pro9 pro2 pro3" transform="translate(169.6 219.52)">repeat</text>
+</g>
+</svg>
